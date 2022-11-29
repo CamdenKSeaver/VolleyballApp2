@@ -9,7 +9,7 @@ import java.util.Date;
 public class Game implements Parcelable {
 
 
-
+    private String docID;
     private String homeTeam;
     private String awayTeam;
     private String date;
@@ -55,37 +55,37 @@ public class Game implements Parcelable {
         this.publicGame = publicGame;
     }
 
-    public String getUserDocID() {
-        return userDocID;
+    public String getDocID() {
+        return docID;
     }
 
     public void setUserDocID(String userDocID) {
-        this.userDocID = userDocID;
+        this.docID = docID;
     }
 
     private boolean publicGame;
-    private String userDocID;
 
 
 
-    public Game(String homeTeam, String awayTeam, String date, ArrayList<ASet> sets, boolean publicGame, String userUID) {
+
+    public Game(String homeTeam, String awayTeam, String date, ArrayList<ASet> sets, boolean publicGame, String docID) {
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
         this.date = date;
         this.sets = sets;
         this.publicGame = publicGame;
-        this.userDocID = userUID;
+        this.docID = docID;
     }
     public Game(){
         homeTeam ="";
         awayTeam = "";
-        date = "";
+        date = "1234";
         sets = new ArrayList<ASet>();
         sets.add(new ASet());
         sets.add(new ASet());
         sets.add(new ASet());
         publicGame = false;
-        userDocID = "";
+        docID = "";
 
 
     }

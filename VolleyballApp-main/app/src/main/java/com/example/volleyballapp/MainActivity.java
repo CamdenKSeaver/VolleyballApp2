@@ -615,22 +615,22 @@ public void setVars() {
                                 firebaseHelper.addUserToFirestore(userName,firebaseHelper.getmAuth().getUid());
                                 firebaseHelper.attachReadDataToUser();
 
-                                Intent intent = new Intent(SignInActivity.this, SelectActionActivity.class);
-                                startActivity(intent);
+//                                Intent intent = new Intent(SignInActivity.this, SelectActionActivity.class);
+//                                startActivity(intent);
                             }
                             else {
                                 try {
                                     throw task.getException();
                                 } catch (FirebaseAuthInvalidCredentialsException e) {
                                     // poorly formatted email address
-                                    Toast.makeText(SignInActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                                     Log.d(TAG, "Sign up failed for " + userName + " " + password + e.getMessage());
                                 } catch (FirebaseAuthEmailException e) {
                                     // duplicate email used
-                                    Toast.makeText(SignInActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                                     Log.d(TAG, "Sign up failed for " + userName + " " + password + e.getMessage());
                                 } catch (Exception e) {
-                                    Toast.makeText(SignInActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                                     Log.d(TAG, "Sign up failed for " + userName + " " + password + e.getMessage());
                                 }
 
@@ -711,6 +711,19 @@ public void setVars() {
             Log.i(TAG, userName + " " + password + " is set after getValues(), return true");
             return true;
         }
+    }
+
+
+    public void addGameButtonClicked(View view) {
+
+
+
+
+        Log.d("Denna", game.getDate());
+        MainActivity.firebaseHelper.addData(game);
+        Log.d("Denna", game.getDate()+" yes");
+       game = new Game();
+       updateUI();
     }
 
 }
