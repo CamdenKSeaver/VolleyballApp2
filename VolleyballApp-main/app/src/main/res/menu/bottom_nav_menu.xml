@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/ic_launcher_foreground"
+        />
+    <item
+        android:id="@+id/scoreboard"
+        android:title="Scoreboard"
+        android:icon="@drawable/ic_launcher_grid_foreground"
+        />
+
+    <item
+        android:id="@+id/publicGames"
+        android:title="Public"
+        android:icon="@drawable/ic_launcher_world_foreground"
+        />
+    <item
+        android:id="@+id/privateGames"
+        android:title="Private"
+        android:icon="@drawable/ic_launcher_lock_foreground"
+        />
+</menu>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    tools:context=".MainActivity"
+    android:background="@color/gold">
+
+    <TextView
+        android:id="@+id/displayTeamBlue1"
+        android:layout_width="51dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:gravity="center"
+        android:text="Blue"
+        android:textSize="18sp"
+        app:layout_constraintHeight_percent=".3"
+        app:layout_constraintStart_toEndOf="@+id/vsTextView1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent=".2" />
+
+    <TextView
+        android:id="@+id/displayTeamRed1"
+        android:layout_width="41dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:gravity="center"
+        android:text="Red"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/vsTextView1"
+        app:layout_constraintHeight_percent=".3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent=".175" />
+
+    <TextView
+        android:id="@+id/displayScore1"
+        android:layout_width="61dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:gravity="center"
+        android:text="Score"
+        android:textSize="18sp"
+        app:layout_constraintHeight_percent=".3"
+        app:layout_constraintStart_toStartOf="@+id/guideline8"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent=".175" />
+
+    <TextView
+        android:id="@+id/vsTextView1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:gravity="center"
+        android:text="VS"
+        app:layout_constraintEnd_toStartOf="@+id/guideline7"
+        app:layout_constraintHeight_percent=".3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent=".05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.30" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.65" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
