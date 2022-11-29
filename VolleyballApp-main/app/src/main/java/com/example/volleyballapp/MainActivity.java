@@ -26,6 +26,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthEmailException;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
@@ -610,16 +612,32 @@ public void setVars() {
                                 firebaseHelper.updateUid(firebaseHelper.getmAuth().getUid());
                                 Log.d(TAG, userName + " created and logged in");
 
-                                // we will implement this later
-                                // updateIfLoggedIn();
-                                // firebaseHelper.attachReadDataToUser();
+                                firebaseHelper.addUserToFirestore(userName,firebaseHelper.getmAuth().getUid());
+                                firebaseHelper.attachReadDataToUser();
 
-
+                                Intent intent = new Intent(SignInActivity.this, SelectActionActivity.class);
+                                startActivity(intent);
                             }
                             else {
+                                try {
+                                    throw task.getException();
+                                } catch (FirebaseAuthInvalidCredentialsException e) {
+                                    // poorly formatted email address
+                                    Toast.makeText(SignInActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    Log.d(TAG, "Sign up failed for " + userName + " " + password + e.getMessage());
+                                } catch (FirebaseAuthEmailException e) {
+                                    // duplicate email used
+                                    Toast.makeText(SignInActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    Log.d(TAG, "Sign up failed for " + userName + " " + password + e.getMessage());
+                                } catch (Exception e) {
+                                    Toast.makeText(SignInActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    Log.d(TAG, "Sign up failed for " + userName + " " + password + e.getMessage());
+                                }
+
                                 // if sign up fails, display a message to the user along with the exception from firebase auth
                                 Log.d(TAG, "Sign up failed for " + userName + " " + password +
-                                        " because of \n"+ task.getResult());
+                                        " because of \n"+ task.getException());
+
 
                             }
                         }
