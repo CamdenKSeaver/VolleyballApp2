@@ -50,7 +50,7 @@ public class FirebaseHelper {
     private static String uid = null;      // var will be updated for currently signed in user
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
-    private ArrayList<Game> myGames;
+    private ArrayList<ASet> myGames;
     // we don't need this yet
     // private ArrayList<Game> myItems = new ArrayList<>();
 
@@ -78,7 +78,7 @@ public class FirebaseHelper {
             uid = mAuth.getUid();
             readData(new FirestoreCallback() {
                 @Override
-                public void onCallback(ArrayList<Game> gameList) {
+                public void onCallback(ArrayList<ASet> gameList) {
                     Log.d(TAG, "Inside attachReadDataToUser, onCallback " + gameList.toString());
                 }
             });
@@ -93,7 +93,7 @@ public class FirebaseHelper {
         // this method is overloaded and incorporates the interface to handle the asynch calls
         editData(game, new FirestoreCallback() {
             @Override
-            public void onCallback(ArrayList<Game> myList) {
+            public void onCallback(ArrayList<ASet> myList) {
                 Log.i(TAG, "Inside editData, onCallback " + myList.toString());
             }
         });
@@ -124,7 +124,7 @@ public class FirebaseHelper {
         // this method is overloaded and incorporates the interface to handle the asynch calls
         deleteData(game, new FirestoreCallback() {
             @Override
-            public void onCallback(ArrayList<Game> myList) {
+            public void onCallback(ArrayList<ASet> myList) {
                 Log.i(TAG, "Inside deleteData, onCallBack" + myList.toString());
             }
         });
@@ -173,19 +173,19 @@ public class FirebaseHelper {
                 });
     }
 
-    public void addData(Game game) {
+    public void addData(ASet game) {
         // add Game game to the database
         // this method is overloaded and incorporates the interface to handle the asynch calls
         addData(game, new FirestoreCallback() {
             @Override
-            public void onCallback(ArrayList<Game> myList) {
+            public void onCallback(ArrayList<ASet> myList) {
                 Log.i(TAG, "Inside addData, onCallback :" + myGames.toString());
             }
         });
     }
 
 
-    private void addData(Game game, FirestoreCallback firestoreCallback) {
+    private void addData(ASet game, FirestoreCallback firestoreCallback) {
         db.collection("users").document(uid).collection("myGameList")
                 .add(game)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -194,7 +194,7 @@ public class FirebaseHelper {
                         // This will set the docID key for the Game that was just added.
                         db.collection("users").document(uid).collection("myGameList").
                                 document(documentReference.getId()).update("docID", documentReference.getId());
-                        Log.i(TAG, "just added " + game.getDate());
+                        Log.i(TAG, "just added "  );
                         readData(firestoreCallback);
                     }
                 })
@@ -207,7 +207,7 @@ public class FirebaseHelper {
     }
 
 
-    public ArrayList<Game> getGameArrayList() {
+    public ArrayList<ASet> getGameArrayList() {
         return myGames;
     }
 
@@ -229,7 +229,7 @@ certain things from occurring until after the onSuccess is finished.
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (DocumentSnapshot doc: task.getResult()) {
-                                Game game = doc.toObject(Game.class);
+                                ASet game = doc.toObject(ASet.class);
                                 myGames.add(game);
                             }
 
@@ -246,7 +246,7 @@ certain things from occurring until after the onSuccess is finished.
 
     //https://stackoverflow.com/questions/48499310/how-to-return-a-documentsnapshot-as-a-result-of-a-method/48500679#48500679
     public interface FirestoreCallback {
-        void onCallback(ArrayList<Game> myList);
+        void onCallback(ArrayList<ASet> myList);
     }
 
 
@@ -290,11 +290,11 @@ certain things from occurring until after the onSuccess is finished.
         this.db = db;
     }
 
-    public ArrayList<Game> getMyGames() {
+    public ArrayList<ASet> getMyGames() {
         return myGames;
     }
 
-    public void setMyGames(ArrayList<Game> myGames) {
+    public void setMyGames(ArrayList<ASet> myGames) {
         this.myGames = myGames;
     }
 }

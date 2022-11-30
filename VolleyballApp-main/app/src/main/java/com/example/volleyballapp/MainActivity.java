@@ -716,11 +716,8 @@ public void setVars() {
 
     public void addGameButtonClicked(View view) {
 
-
-
-
         Log.d("Denna", game.getDate());
-        MainActivity.firebaseHelper.addData(game);
+        MainActivity.firebaseHelper.addData(currentSet);
         Log.d("Denna", game.getDate()+" yes");
        game = new Game();
        updateUI();

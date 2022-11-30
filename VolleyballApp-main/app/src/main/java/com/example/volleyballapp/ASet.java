@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import java.util.Date;
 import android.os.Parcel;
 
-  
+
 
 
 
@@ -49,6 +49,8 @@ public class ASet implements Parcelable {
 
 
     public ASet(){
+        homeScore = 0;
+        awayScore = 0;
         homeAce = 0;
         homeBlock = 0;
         homeKill = 0;
@@ -66,7 +68,8 @@ public class ASet implements Parcelable {
     }
 
     public ASet(Parcel parcel) {
-
+homeScore=parcel.readInt();
+awayScore = parcel.readInt();
         homeAce = parcel.readInt();
         homeBlock = parcel.readInt();
         homeKill = parcel.readInt();
@@ -86,6 +89,8 @@ public class ASet implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(homeScore);
+        dest.writeInt(awayScore);
         dest.writeInt(homeAce);
         dest.writeInt(homeBlock);
         dest.writeInt(homeKill);
