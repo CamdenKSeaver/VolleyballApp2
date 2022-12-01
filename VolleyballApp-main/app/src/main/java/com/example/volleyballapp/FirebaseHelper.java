@@ -176,6 +176,7 @@ public class FirebaseHelper {
     public void addData(ASet game) {
         // add Game game to the database
         // this method is overloaded and incorporates the interface to handle the asynch calls
+        Log.d("Denna", "calling addData public");
         addData(game, new FirestoreCallback() {
             @Override
             public void onCallback(ArrayList<ASet> myList) {
@@ -186,15 +187,18 @@ public class FirebaseHelper {
 
 
     private void addData(ASet game, FirestoreCallback firestoreCallback) {
+        Log.d("Denna", "calling addData private");
+        Log.d("Denna", game.toString());
+        Log.d("Denna", uid);
         db.collection("users").document(uid).collection("myGameList")
                 .add(game)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         // This will set the docID key for the Game that was just added.
-                        db.collection("users").document(uid).collection("myGameList").
-                                document(documentReference.getId()).update("docID", documentReference.getId());
-                        Log.i(TAG, "just added "  );
+//                        db.collection("users").document(uid).collection("myGameList").
+//                                document(documentReference.getId()).update("ASetDocID", documentReference.getId());
+                        Log.i(TAG, "just added " +game.toString() );
                         readData(firestoreCallback);
                     }
                 })

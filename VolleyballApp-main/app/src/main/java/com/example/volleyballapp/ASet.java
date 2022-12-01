@@ -68,8 +68,8 @@ public class ASet implements Parcelable {
     }
 
     public ASet(Parcel parcel) {
-homeScore=parcel.readInt();
-awayScore = parcel.readInt();
+        homeScore=parcel.readInt();
+        awayScore = parcel.readInt();
         homeAce = parcel.readInt();
         homeBlock = parcel.readInt();
         homeKill = parcel.readInt();
@@ -107,6 +107,29 @@ awayScore = parcel.readInt();
         dest.writeString(ASetDocID);
 
 
+    }
+
+    @Override
+    public String toString() {
+        return "ASet{" +
+                "homeScore=" + homeScore +
+                ", awayScore=" + awayScore +
+                ", homeAce=" + homeAce +
+                ", homeBlock=" + homeBlock +
+                ", homeKill=" + homeKill +
+                ", homeOppAtkError=" + homeOppAtkError +
+                ", homeOppServeError=" + homeOppServeError +
+                ", homeOppOtherError=" + homeOppOtherError +
+                ", awayAce=" + awayAce +
+                ", awayBlock=" + awayBlock +
+                ", awayKill=" + awayKill +
+                ", awayOppAtkError=" + awayOppAtkError +
+                ", awayOppServeError=" + awayOppServeError +
+                ", awayOppOtherError=" + awayOppOtherError +
+                ", gameDocID='" + gameDocID + '\'' +
+                ", ASetDocID='" + ASetDocID + '\'' +
+                ", CREATOR=" + CREATOR +
+                '}';
     }
 
     public int getHomeScore() {
