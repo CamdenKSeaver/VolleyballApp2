@@ -720,10 +720,11 @@ public void setVars() {
         Log.d("Denna", "made new game");
 
 
+
     }
-//    public void saveGame(View view){
-//
-//    }
+    public void saveGame(View view){
+
+    }
 
 }
 

@@ -159,22 +159,22 @@ public class FirebaseHelper {
         }
     }
 
-    public void editData(Game game) {
-        // edit Game game to the database
-        // this method is overloaded and incorporates the interface to handle the asynch calls
-        editData(game, new FirestoreCallback() {
-            @Override
-            public void onCallback(ArrayList<Game> myList) {
-                Log.i(TAG, "Inside editData, onCallback " + myList.toString());
-            }
-        });
-    }
+//    public void editData(Game game) {
+//        // edit Game game to the database
+//        // this method is overloaded and incorporates the interface to handle the asynch calls
+//        editData(game, new FirestoreCallback() {
+//            @Override
+//            public void onCallback(ArrayList<Game> myList) {
+//                Log.i(TAG, "Inside editData, onCallback " + myList.toString());
+//            }
+//        });
+//    }
 
-    private void editData(Game game, FirestoreCallback firestoreCallback) {
-        String docId = game.getDocID();
-        db.collection("users").document(uid).collection("myGameList")
-                .document(docId)
-                .set(game)
+    public void editData(String docID, String setId, ASet set, FirestoreCallback firestoreCallback) {
+
+        db.collection("allGames").document(docID).collection("sets")
+                .document(setId)
+                .set(set)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
