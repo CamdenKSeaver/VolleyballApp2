@@ -50,15 +50,86 @@ public class FirebaseHelper {
     private static String uid = null;      // var will be updated for currently signed in user
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
-    private ArrayList<ASet> myGames;
-    // we don't need this yet
-    // private ArrayList<Game> myItems = new ArrayList<>();
+    private ArrayList<Game> myGames;
+    // any other instance vars you need
 
+    private static String currentGameDocUID = "none";
 
     public FirebaseHelper() {
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         myGames = new ArrayList<>();
+        // instantiate any other vars you need
+
+        makeNewGame("12-1-22 FHS vs CHS");
+    }
+
+
+    /**
+     * This will create a new Game document in firestore.  Each game consists of
+     * the game title, coachUID, and gameDocID.  It also has a collection of three sets
+     * @param gameTitle
+     */
+    public void makeNewGame(String gameTitle) {
+        if (mAuth.getUid() != null)
+            uid = mAuth.getUid();
+        // This is what adds the three key value-pairs of data for the Game
+        Map<String, Object> game = new HashMap<>();
+        game.put("GameTitle", gameTitle);
+        game.put("coachUID", uid);
+        game.put("gameDocID", "not set yet");
+        // Add a new document with a docID = to the game date and team set by coach
+        db.collection("allGames")
+                .add(game)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        // This will set the docID key for the Memory that was just added.
+                        currentGameDocUID = documentReference.getId();
+                        db.collection("allGames").
+                                document(documentReference.getId()).update("gameDocID", documentReference.getId());
+
+                        // helper method to add a set object to the sets collection for this Game document
+                        addSetToGame(1, currentGameDocUID);
+                        addSetToGame(2, currentGameDocUID);
+                        addSetToGame(3, currentGameDocUID);
+                        Log.i(TAG, "just added " + gameTitle);
+
+                        Log.i(TAG, "new game docID "+currentGameDocUID);
+                        MainActivity.presentGameDocID = currentGameDocUID;
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.i(TAG, "Error adding document", e);
+                    }
+                });
+
+    }
+
+    /**
+     * Takes in the set number and the docID for the current game and adds this
+     * set to the data in firestore.
+     * @param setNum
+     * @param gameDocID
+     */
+
+    public void addSetToGame(int setNum, String gameDocID) {
+        db.collection("allGames").
+                document(gameDocID).
+                collection("sets")
+                .add(new ASet(setNum, gameDocID))
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        db.collection("allGames").document(gameDocID)
+                                .collection("sets").document(documentReference.getId())
+                                .update("setDocIC", documentReference.getId());
+                    }
+                });
+
     }
 
 
@@ -78,7 +149,7 @@ public class FirebaseHelper {
             uid = mAuth.getUid();
             readData(new FirestoreCallback() {
                 @Override
-                public void onCallback(ArrayList<ASet> gameList) {
+                public void onCallback(ArrayList<Game> gameList) {
                     Log.d(TAG, "Inside attachReadDataToUser, onCallback " + gameList.toString());
                 }
             });
@@ -93,7 +164,7 @@ public class FirebaseHelper {
         // this method is overloaded and incorporates the interface to handle the asynch calls
         editData(game, new FirestoreCallback() {
             @Override
-            public void onCallback(ArrayList<ASet> myList) {
+            public void onCallback(ArrayList<Game> myList) {
                 Log.i(TAG, "Inside editData, onCallback " + myList.toString());
             }
         });
@@ -124,7 +195,7 @@ public class FirebaseHelper {
         // this method is overloaded and incorporates the interface to handle the asynch calls
         deleteData(game, new FirestoreCallback() {
             @Override
-            public void onCallback(ArrayList<ASet> myList) {
+            public void onCallback(ArrayList<Game> myList) {
                 Log.i(TAG, "Inside deleteData, onCallBack" + myList.toString());
             }
         });
@@ -173,20 +244,20 @@ public class FirebaseHelper {
                 });
     }
 
-    public void addData(ASet game) {
+    public void addData(Game game) {
         // add Game game to the database
         // this method is overloaded and incorporates the interface to handle the asynch calls
         Log.d("Denna", "calling addData public");
         addData(game, new FirestoreCallback() {
             @Override
-            public void onCallback(ArrayList<ASet> myList) {
+            public void onCallback(ArrayList<Game> myList) {
                 Log.i(TAG, "Inside addData, onCallback :" + myGames.toString());
             }
         });
     }
 
 
-    private void addData(ASet game, FirestoreCallback firestoreCallback) {
+    private void addData(Game game, FirestoreCallback firestoreCallback) {
         Log.d("Denna", "calling addData private");
         Log.d("Denna", game.toString());
         Log.d("Denna", uid);
@@ -197,7 +268,7 @@ public class FirebaseHelper {
                     public void onSuccess(DocumentReference documentReference) {
                         // This will set the docID key for the Game that was just added.
 //                        db.collection("users").document(uid).collection("myGameList").
-//                                document(documentReference.getId()).update("ASetDocID", documentReference.getId());
+//                                document(documentReference.getId()).update("GameDocID", documentReference.getId());
                         Log.i(TAG, "just added " +game.toString() );
                         readData(firestoreCallback);
                     }
@@ -211,7 +282,7 @@ public class FirebaseHelper {
     }
 
 
-    public ArrayList<ASet> getGameArrayList() {
+    public ArrayList<Game> getGameArrayList() {
         return myGames;
     }
 
@@ -233,7 +304,7 @@ certain things from occurring until after the onSuccess is finished.
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (DocumentSnapshot doc: task.getResult()) {
-                                ASet game = doc.toObject(ASet.class);
+                                Game game = doc.toObject(Game.class);
                                 myGames.add(game);
                             }
 
@@ -250,7 +321,7 @@ certain things from occurring until after the onSuccess is finished.
 
     //https://stackoverflow.com/questions/48499310/how-to-return-a-documentsnapshot-as-a-result-of-a-method/48500679#48500679
     public interface FirestoreCallback {
-        void onCallback(ArrayList<ASet> myList);
+        void onCallback(ArrayList<Game> myList);
     }
 
 
@@ -294,11 +365,11 @@ certain things from occurring until after the onSuccess is finished.
         this.db = db;
     }
 
-    public ArrayList<ASet> getMyGames() {
+    public ArrayList<Game> getMyGames() {
         return myGames;
     }
 
-    public void setMyGames(ArrayList<ASet> myGames) {
+    public void setMyGames(ArrayList<Game> myGames) {
         this.myGames = myGames;
     }
 }

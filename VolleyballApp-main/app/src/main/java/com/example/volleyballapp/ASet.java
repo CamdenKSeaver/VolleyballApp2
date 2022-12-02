@@ -11,125 +11,98 @@ import android.os.Parcel;
 
 
 public class ASet implements Parcelable {
-    private int homeScore;
-    private int awayScore;
-    private int homeAce;
-    private int homeBlock;
-    private int homeKill;
-    private int homeOppAtkError;
-    private int homeOppServeError;
-    private int homeOppOtherError;
-    private int awayAce;
-    private int awayBlock;
-    private int awayKill;
-    private int awayOppAtkError;
-    private int awayOppServeError;
-    private int awayOppOtherError;
-    private String gameDocID;
-    private String ASetDocID;
 
-    public ASet(int homeScore, int awayScore, int homeAce, int homeBlock, int homeKill, int homeOppAtkError, int homeOppServeError, int homeOppOtherError, int awayAce, int awayBlock, int awayKill, int awayOppAtkError, int awayOppServeError, int awayOppOtherError, String gameDocID, String ASetDocID) {
+    private int setNumber;
+    private int homeScore, awayScore;
+    private int homeAce, homeBlock, homeKill;
+    private int awayAce, awayBlock, awayKill;
+    private int homeOppAtkError, homeOppServeError, homeOppOtherError;
+    private int awayOppAtkError, awayOppServeError, awayOppOtherError;
+    private String gameDocID, setDocID;
+
+    public ASet(int setNumber, int homeScore, int awayScore, int homeAce, int homeBlock, int homeKill,
+                     int awayAce, int awayBlock, int awayKill, int homeOppAtkError,
+                     int homeOppServeError, int homeOppOtherError, int awayOppAtkError,
+                     int awayOppServeError, int awayOppOtherError, String gameDocID, String setDocID) {
+        this.setNumber = setNumber;
         this.homeScore = homeScore;
         this.awayScore = awayScore;
         this.homeAce = homeAce;
         this.homeBlock = homeBlock;
         this.homeKill = homeKill;
-        this.homeOppAtkError = homeOppAtkError;
-        this.homeOppServeError = homeOppServeError;
-        this.homeOppOtherError = homeOppOtherError;
         this.awayAce = awayAce;
         this.awayBlock = awayBlock;
         this.awayKill = awayKill;
+        this.homeOppAtkError = homeOppAtkError;
+        this.homeOppServeError = homeOppServeError;
+        this.homeOppOtherError = homeOppOtherError;
         this.awayOppAtkError = awayOppAtkError;
         this.awayOppServeError = awayOppServeError;
         this.awayOppOtherError = awayOppOtherError;
         this.gameDocID = gameDocID;
-        this.ASetDocID = ASetDocID;
+        this.setDocID = setDocID;
     }
 
-
-    public ASet(){
+    public ASet() {
+        setNumber = 0;
         homeScore = 0;
         awayScore = 0;
         homeAce = 0;
         homeBlock = 0;
         homeKill = 0;
-        homeOppAtkError = 0;
-        homeOppServeError = 0;
-        homeOppOtherError = 0;
         awayAce = 0;
         awayBlock = 0;
         awayKill = 0;
+        homeOppAtkError = 0;
+        homeOppServeError = 0;
+        homeOppOtherError = 0;
         awayOppAtkError = 0;
         awayOppServeError = 0;
         awayOppOtherError = 0;
         gameDocID = "none";
-        ASetDocID = "none";
+        setDocID = "none";
     }
 
-    public ASet(Parcel parcel) {
-        homeScore=parcel.readInt();
-        awayScore = parcel.readInt();
-        homeAce = parcel.readInt();
-        homeBlock = parcel.readInt();
-        homeKill = parcel.readInt();
-        homeOppAtkError = parcel.readInt();
-        homeOppServeError = parcel.readInt();
-        homeOppOtherError = parcel.readInt();
-        awayAce = parcel.readInt();
-        awayBlock = parcel.readInt();
-        awayKill = parcel.readInt();
-        awayOppAtkError = parcel.readInt();
-        awayOppServeError = parcel.readInt();
-        awayOppOtherError = parcel.readInt();
-        gameDocID = parcel.readString();
-        ASetDocID = parcel.readString();
-
+    public ASet(int setNumber, String gameDocID) {
+        this.setNumber = setNumber;
+        homeScore = 0;
+        awayScore = 0;
+        homeAce = 0;
+        homeBlock = 0;
+        homeKill = 0;
+        awayAce = 0;
+        awayBlock = 0;
+        awayKill = 0;
+        homeOppAtkError = 0;
+        homeOppServeError = 0;
+        homeOppOtherError = 0;
+        awayOppAtkError = 0;
+        awayOppServeError = 0;
+        awayOppOtherError = 0;
+        this.gameDocID = gameDocID;
+        setDocID = "none";
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(homeScore);
-        dest.writeInt(awayScore);
-        dest.writeInt(homeAce);
-        dest.writeInt(homeBlock);
-        dest.writeInt(homeKill);
-        dest.writeInt(homeOppAtkError);
-        dest.writeInt(homeOppServeError);
-        dest.writeInt(homeOppOtherError);
-        dest.writeInt(awayAce);
-        dest.writeInt(awayBlock);
-        dest.writeInt(awayKill);
-        dest.writeInt(awayOppAtkError);
-        dest.writeInt(awayOppServeError);
-        dest.writeInt(awayOppOtherError);
-        dest.writeString(gameDocID);
-        dest.writeString(ASetDocID);
 
 
+    public static final Creator<ASet> CREATOR = new Creator<ASet>() {
+        @Override
+        public ASet createFromParcel(Parcel in) {
+            return new ASet(in);
+        }
+
+        @Override
+        public ASet[] newArray(int size) {
+            return new ASet[size];
+        }
+    };
+
+    public int getSetNumber() {
+        return setNumber;
     }
 
-    @Override
-    public String toString() {
-        return "ASet{" +
-                "homeScore=" + homeScore +
-                ", awayScore=" + awayScore +
-                ", homeAce=" + homeAce +
-                ", homeBlock=" + homeBlock +
-                ", homeKill=" + homeKill +
-                ", homeOppAtkError=" + homeOppAtkError +
-                ", homeOppServeError=" + homeOppServeError +
-                ", homeOppOtherError=" + homeOppOtherError +
-                ", awayAce=" + awayAce +
-                ", awayBlock=" + awayBlock +
-                ", awayKill=" + awayKill +
-                ", awayOppAtkError=" + awayOppAtkError +
-                ", awayOppServeError=" + awayOppServeError +
-                ", awayOppOtherError=" + awayOppOtherError +
-                ", gameDocID='" + gameDocID + '\'' +
-                ", ASetDocID='" + ASetDocID + '\'' +
-                ", CREATOR=" + CREATOR +
-                '}';
+    public void setSetNumber(int setNumber) {
+        this.setNumber = setNumber;
     }
 
     public int getHomeScore() {
@@ -146,6 +119,22 @@ public class ASet implements Parcelable {
 
     public void setAwayScore(int awayScore) {
         this.awayScore = awayScore;
+    }
+
+    public String getGameDocID() {
+        return gameDocID;
+    }
+
+    public void setGameDocID(String gameDocID) {
+        this.gameDocID = gameDocID;
+    }
+
+    public String getSetDocID() {
+        return setDocID;
+    }
+
+    public void setSetDocID(String setDocID) {
+        this.setDocID = setDocID;
     }
 
     public int getHomeAce() {
@@ -172,30 +161,6 @@ public class ASet implements Parcelable {
         this.homeKill = homeKill;
     }
 
-    public int getHomeOppAtkError() {
-        return homeOppAtkError;
-    }
-
-    public void setHomeOppAtkError(int homeOppAtkError) {
-        this.homeOppAtkError = homeOppAtkError;
-    }
-
-    public int getHomeOppServeError() {
-        return homeOppServeError;
-    }
-
-    public void setHomeOppServeError(int homeOppServeError) {
-        this.homeOppServeError = homeOppServeError;
-    }
-
-    public int getHomeOppOtherError() {
-        return homeOppOtherError;
-    }
-
-    public void setHomeOppOtherError(int homeOppOtherError) {
-        this.homeOppOtherError = homeOppOtherError;
-    }
-
     public int getAwayAce() {
         return awayAce;
     }
@@ -218,6 +183,30 @@ public class ASet implements Parcelable {
 
     public void setAwayKill(int awayKill) {
         this.awayKill = awayKill;
+    }
+
+    public int getHomeOppAtkError() {
+        return homeOppAtkError;
+    }
+
+    public void setHomeOppAtkError(int homeOppAtkError) {
+        this.homeOppAtkError = homeOppAtkError;
+    }
+
+    public int getHomeOppServeError() {
+        return homeOppServeError;
+    }
+
+    public void setHomeOppServeError(int homeOppServeError) {
+        this.homeOppServeError = homeOppServeError;
+    }
+
+    public int getHomeOppOtherError() {
+        return homeOppOtherError;
+    }
+
+    public void setHomeOppOtherError(int homeOppOtherError) {
+        this.homeOppOtherError = homeOppOtherError;
     }
 
     public int getAwayOppAtkError() {
@@ -244,43 +233,51 @@ public class ASet implements Parcelable {
         this.awayOppOtherError = awayOppOtherError;
     }
 
-    public String getGameDocID() {
-        return gameDocID;
-    }
-
-    public void setGameDocID(String gameDocID) {
-        this.gameDocID = gameDocID;
-    }
-
-    public String getASetDocID() {
-        return ASetDocID;
-    }
-
-    public void setASetDocID(String ASetDocID) {
-        this.ASetDocID = ASetDocID;
-    }
-
-    public final Parcelable.Creator<ASet> CREATOR = new
-            Parcelable.Creator<ASet>() {
-
-                @Override
-                public ASet createFromParcel(Parcel parcel) {
-                    return new ASet(parcel);
-                }
-
-                @Override
-                public ASet[] newArray(int size) {
-                    return new ASet[0];
-                }
-            };
 
     @Override
     public int describeContents() {
         return 0;
     }
 
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(setNumber);
+        parcel.writeInt(homeScore);
+        parcel.writeInt(awayScore);
+        parcel.writeInt(homeAce);
+        parcel.writeInt(homeBlock);
+        parcel.writeInt(homeKill);
+        parcel.writeInt(awayAce);
+        parcel.writeInt(awayBlock);
+        parcel.writeInt(awayKill);
+        parcel.writeInt(homeOppAtkError);
+        parcel.writeInt(homeOppServeError);
+        parcel.writeInt(homeOppOtherError);
+        parcel.writeInt(awayOppAtkError);
+        parcel.writeInt(awayOppServeError);
+        parcel.writeInt(awayOppOtherError);
+        parcel.writeString(gameDocID);
+        parcel.writeString(setDocID);
+    }
 
+    protected ASet(Parcel in) {
+        setNumber = in.readInt();
+        homeScore = in.readInt();
+        awayScore = in.readInt();
+        homeAce = in.readInt();
+        homeBlock = in.readInt();
+        homeKill = in.readInt();
+        awayAce = in.readInt();
+        awayBlock = in.readInt();
+        awayKill = in.readInt();
+        homeOppAtkError = in.readInt();
+        homeOppServeError = in.readInt();
+        homeOppOtherError = in.readInt();
+        awayOppAtkError = in.readInt();
+        awayOppServeError = in.readInt();
+        awayOppOtherError = in.readInt();
+        gameDocID = in.readString();
+        setDocID = in.readString();
 
+    }
 }
-
-

@@ -57,7 +57,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
-    public static String gameDocID;
+    public static String presentGameDocID;
     Game game;
     ASet currentSet;
     BottomNavigationView bottomNavigationView;
@@ -716,13 +716,14 @@ public void setVars() {
 
     public void addGameButtonClicked(View view) {
 
-        Log.d("Denna", game.getDate());
-        Log.d("Denna", currentSet.toString());
-        MainActivity.firebaseHelper.addData(currentSet);
-        Log.d("Denna", game.getDate()+" yes");
-       game = new Game();
-       updateUI();
+        MainActivity.firebaseHelper.makeNewGame("test");
+        Log.d("Denna", "made new game");
+
+
     }
+//    public void saveGame(View view){
+//
+//    }
 
 }
 
