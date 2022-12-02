@@ -617,6 +617,8 @@ public void setVars() {
 
 //                                Intent intent = new Intent(SignInActivity.this, SelectActionActivity.class);
 //                                startActivity(intent);
+                                bottomNavigationView.setVisibility(View.VISIBLE);
+
                             }
                             else {
                                 try {
@@ -666,7 +668,7 @@ public void setVars() {
                                 // firebaseHelper.attachReadDataToUser();
 
                                 Log.d(TAG, userName + " logged in");
-
+                                bottomNavigationView.setVisibility(View.VISIBLE);
                             }
                             else {
                                 // if log in fails, display a message to the user along with the exception from firebase auth
