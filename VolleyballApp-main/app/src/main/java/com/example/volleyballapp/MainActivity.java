@@ -11,7 +11,10 @@ import androidx.annotation.NonNull;
 import static androidx.core.content.ContextCompat.startActivity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Application;
+import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.EditText;
@@ -61,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     Game game;
     ASet currentSet;
     BottomNavigationView bottomNavigationView;
+    boolean loggedIn =false;
 
     TextView homeScores;
     TextView awayScore;
@@ -77,6 +81,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     TextView homeOthErr;
     TextView awayOthErr;
     TextView setNumber;
+    EditText homeTeamName;
+    EditText awayTeamName;
+
     Button homeKillButton;
     Button homeScoresButton;
     Button awayScoreButton;
@@ -111,58 +118,16 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
 
-    public void resetScores() {
-        homeScores = findViewById(R.id.homeScore);
-        homeScores.setText("0");
-
-        awayScore = findViewById(R.id.awayScore);
-        awayScore.setText("0");
-
-        homeAce = findViewById(R.id.homeAce);
-        homeAce.setText("0");
 
 
-        awayAce = findViewById(R.id.awayAce);
-        awayAce.setText("0");
 
-        homeKill = findViewById(R.id.homeKill);
-        homeKill.setText("0");
-
-        awayKill = findViewById(R.id.awayKill);
-        awayKill.setText("0");
-
-        homeBlock = findViewById(R.id.homeBlock);
-        homeBlock.setText("0");
-
-        awayBlock = findViewById(R.id.awayBlock);
-        awayBlock.setText("0");
-
-        homeAtkErr = findViewById(R.id.homeOppAtkErr);
-        homeAtkErr.setText("0");
-
-        awayAtkErr = findViewById(R.id.awayOppAtkErr);
-        awayAtkErr.setText("0");
-
-        homeSrvErr = findViewById(R.id.homeOppSrvErr);
-        homeSrvErr.setText("0");
-
-        awaySrvErr = findViewById(R.id.awayOppSrvErr);
-        awaySrvErr.setText("0");
-
-        homeOthErr = findViewById(R.id.homeOppOthErr);
-        homeOthErr.setText("0");
-
-        awayOthErr = findViewById(R.id.awayOppOthErr);
-        awayOthErr.setText("0");
-
-
-    }
 
 
     Home firstFragment = new Home();
     Scoreboard secondFragment = new Scoreboard();
     PublicGames thirdFragment = new PublicGames();
     PrivateGames fourthFragment = new PrivateGames();
+    secondHome fifthFragment = new secondHome();
 
 
     public void longClick(View v) {
@@ -504,7 +469,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         awayOthErr = findViewById(R.id.awayOppOthErr);
 
 
-        homeKill.setText("" + currentSet.getHomeKill());
+
+        homeKill.setText(""+ currentSet.getHomeKill() );
         homeScores.setText("" + currentSet.getHomeScore());
         homeAce.setText("" + currentSet.getHomeAce());
         homeBlock.setText("" + currentSet.getHomeBlock());
@@ -560,7 +526,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         switch (item.getItemId()) {
             case R.id.home:
-                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, firstFragment).commit();
+                if(loggedIn == false){
+                    getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, firstFragment).commit();
+                }
+                else {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, fifthFragment).commit();
+                }
                 return true;
 
             case R.id.scoreboard:
@@ -618,6 +589,8 @@ public void setVars() {
 //                                Intent intent = new Intent(SignInActivity.this, SelectActionActivity.class);
 //                                startActivity(intent);
                                 bottomNavigationView.setVisibility(View.VISIBLE);
+                                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, fifthFragment).commit();
+                                loggedIn = true;
 
                             }
                             else {
@@ -669,6 +642,8 @@ public void setVars() {
 
                                 Log.d(TAG, userName + " logged in");
                                 bottomNavigationView.setVisibility(View.VISIBLE);
+                                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, fifthFragment).commit();
+                                loggedIn = true;
                             }
                             else {
                                 // if log in fails, display a message to the user along with the exception from firebase auth
@@ -718,14 +693,24 @@ public void setVars() {
 
     public void addGameButtonClicked(View view) {
 
-        MainActivity.firebaseHelper.makeNewGame("test");
+        getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, secondFragment).commit();
+   
+        game = new Game();
+        currentSet = game.getSets().get(0);
+
+
         Log.d("Denna", "made new game");
 
 
 
     }
     public void saveGame(View view){
-
+       // firebaseHelper.editData("9f3Dyu61T193jM11wTFP", "FAPd2LpUClcM795hmZqh",game.getSets().get(0) );
+        awayTeamName = findViewById(R.id.awayTeamName);
+        homeTeamName = findViewById(R.id.homeTeamName);
+        game.setHomeTeam(homeTeamName.getText().toString());
+        game.setAwayTeam(awayTeamName.getText().toString());
+        firebaseHelper.makeNewGame(game);
     }
 
 }

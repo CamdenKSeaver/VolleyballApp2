@@ -269,7 +269,7 @@
         android:text="Save Game"
         android:textAllCaps="false"
         android:textSize="17sp"
-        android:onClick="addGameButtonClicked"
+        android:onClick="saveGame"
         app:layout_constraintBottom_toTopOf="@id/awayTeamName"
         android:textColor="@color/gold"
         android:layout_marginLeft="1dp"

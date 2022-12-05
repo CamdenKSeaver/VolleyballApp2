@@ -61,7 +61,7 @@ public class FirebaseHelper {
         myGames = new ArrayList<>();
         // instantiate any other vars you need
 
-        makeNewGame("12-1-22 FHS vs CHS");
+       // makeNewGame("12-1-22 FHS vs CHS");
     }
 
 
@@ -70,17 +70,17 @@ public class FirebaseHelper {
      * the game title, coachUID, and gameDocID.  It also has a collection of three sets
      * @param gameTitle
      */
-    public void makeNewGame(String gameTitle) {
+    public void makeNewGame(Game game) {
         if (mAuth.getUid() != null)
             uid = mAuth.getUid();
         // This is what adds the three key value-pairs of data for the Game
-        Map<String, Object> game = new HashMap<>();
-        game.put("GameTitle", gameTitle);
-        game.put("coachUID", uid);
-        game.put("gameDocID", "not set yet");
+        Map<String, Object> gameCollection = new HashMap<>();
+        gameCollection.put("GameTitle", game.getHomeTeam() + " vs " + game.getAwayTeam());
+        gameCollection.put("coachUID", uid);
+        gameCollection.put("gameDocID", "not set yet");
         // Add a new document with a docID = to the game date and team set by coach
         db.collection("allGames")
-                .add(game)
+                .add(gameCollection)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
@@ -90,10 +90,10 @@ public class FirebaseHelper {
                                 document(documentReference.getId()).update("gameDocID", documentReference.getId());
 
                         // helper method to add a set object to the sets collection for this Game document
-                        addSetToGame(1, currentGameDocUID);
-                        addSetToGame(2, currentGameDocUID);
-                        addSetToGame(3, currentGameDocUID);
-                        Log.i(TAG, "just added " + gameTitle);
+                        addSetToGame(game,0, currentGameDocUID);
+                        addSetToGame(game,1, currentGameDocUID);
+                        addSetToGame(game,2, currentGameDocUID);
+                        Log.i(TAG, "just added " + game.getHomeTeam() + " vs " + game.getAwayTeam());
 
                         Log.i(TAG, "new game docID "+currentGameDocUID);
                         MainActivity.presentGameDocID = currentGameDocUID;
@@ -116,11 +116,10 @@ public class FirebaseHelper {
      * @param gameDocID
      */
 
-    public void addSetToGame(int setNum, String gameDocID) {
+    public void addSetToGame(Game game, int setNum, String gameDocID) {
         db.collection("allGames").
-                document(gameDocID).
-                collection("sets")
-                .add(new ASet(setNum, gameDocID))
+                document(gameDocID).collection("sets")
+                .add(game.getSets().get(setNum))
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
@@ -169,17 +168,17 @@ public class FirebaseHelper {
 //            }
 //        });
 //    }
+//FirestoreCallback firestoreCallback
+    public void editData(String gamedocID, String setId, ASet set ) {
 
-    public void editData(String docID, String setId, ASet set, FirestoreCallback firestoreCallback) {
-
-        db.collection("allGames").document(docID).collection("sets")
+        db.collection("allGames").document(gamedocID).collection("sets")
                 .document(setId)
                 .set(set)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
                         Log.i(TAG, "Success updating document");
-                        readData(firestoreCallback);
+                      //  readData(firestoreCallback);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

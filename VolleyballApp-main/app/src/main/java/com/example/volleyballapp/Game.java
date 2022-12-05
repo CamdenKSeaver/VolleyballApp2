@@ -81,9 +81,9 @@ public class Game implements Parcelable {
         awayTeam = "";
         date = "1234";
         sets = new ArrayList<ASet>();
-        sets.add(new ASet());
-        sets.add(new ASet());
-        sets.add(new ASet());
+        sets.add(new ASet(1));
+        sets.add(new ASet(2));
+        sets.add(new ASet(3));
         publicGame = false;
         docID = "";
 
