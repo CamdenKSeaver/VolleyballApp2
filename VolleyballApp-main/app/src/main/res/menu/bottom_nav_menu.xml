@@ -11,11 +11,7 @@
         android:icon="@drawable/ic_launcher_grid_foreground"
         />
 
-    <item
-        android:id="@+id/publicGames"
-        android:title="Public"
-        android:icon="@drawable/ic_launcher_world_foreground"
-        />
+
     <item
         android:id="@+id/privateGames"
         android:title="Private"

@@ -68,7 +68,7 @@ public class FirebaseHelper {
     /**
      * This will create a new Game document in firestore.  Each game consists of
      * the game title, coachUID, and gameDocID.  It also has a collection of three sets
-     * @param gameTitle
+     * @param
      */
     public void makeNewGame(Game game) {
         if (mAuth.getUid() != null)
@@ -126,6 +126,16 @@ public class FirebaseHelper {
                         db.collection("allGames").document(gameDocID)
                                 .collection("sets").document(documentReference.getId())
                                 .update("setDocIC", documentReference.getId());
+                        if(setNum == 0){
+                            MainActivity.set1DocID = documentReference.getId();
+                        }
+                        if(setNum == 1){
+                            MainActivity.set2DocID = documentReference.getId();
+                        }
+                        if(setNum == 2){
+                            MainActivity.set3DocID = documentReference.getId();
+                        }
+
                     }
                 });
 

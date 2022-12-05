@@ -262,19 +262,37 @@
 
     <Button
         android:id="@+id/saveButton"
-        app:layout_constraintWidth_percent=".49"
+        app:layout_constraintWidth_percent=".245"
         app:layout_constraintHeight_percent=".11"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="Save Game"
         android:textAllCaps="false"
-        android:textSize="17sp"
+        android:textSize="13sp"
         android:onClick="saveGame"
         app:layout_constraintBottom_toTopOf="@id/awayTeamName"
         android:textColor="@color/gold"
         android:layout_marginLeft="1dp"
         android:layout_marginBottom="1dp"
         app:layout_constraintLeft_toRightOf="@id/guideline"
+        tools:layout_editor_absoluteX="261dp"
+        tools:layout_editor_absoluteY="24dp" />
+    <Button
+        android:id="@+id/newGameButton"
+        app:layout_constraintWidth_percent=".245"
+        app:layout_constraintHeight_percent=".11"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="New Game"
+        android:textAllCaps="false"
+        android:textSize="13sp"
+
+        android:onClick="addGameButtonClicked"
+        app:layout_constraintBottom_toTopOf="@id/awayTeamName"
+        android:textColor="@color/gold"
+        android:layout_marginLeft="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintLeft_toRightOf="@id/saveButton"
         tools:layout_editor_absoluteX="261dp"
         tools:layout_editor_absoluteY="24dp" />
 

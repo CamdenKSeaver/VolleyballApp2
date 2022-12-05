@@ -61,6 +61,9 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
     public static String presentGameDocID;
+    public static String set1DocID;
+    public static String set2DocID;
+    public static String set3DocID;
     Game game;
     ASet currentSet;
     BottomNavigationView bottomNavigationView;
@@ -451,7 +454,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         return false;
 
     }
-
+    boolean editingGame = false;
     public void updateUI() {
         homeScores = findViewById(R.id.homeScore);
         awayScore = findViewById(R.id.awayScore);
@@ -467,6 +470,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         awaySrvErr = findViewById(R.id.awayOppSrvErr);
         homeOthErr = findViewById(R.id.homeOppOthErr);
         awayOthErr = findViewById(R.id.awayOppOthErr);
+        saveGame = findViewById(R.id.saveButton);
+        awayTeamName = findViewById(R.id.awayTeamName);
+        homeTeamName = findViewById(R.id.homeTeamName);
 
 
 
@@ -485,6 +491,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         awayAtkErr.setText("" + currentSet.getAwayOppAtkError());
         awaySrvErr.setText("" + currentSet.getAwayOppServeError());
         awayOthErr.setText("" + currentSet.getAwayOppOtherError());
+        awayTeamName.setText(game.getAwayTeam());
+        homeTeamName.setText(game.getHomeTeam());
+        if(editingGame == false){
+            saveGame.setText("Save Game");
+
+        }
+        else
+            saveGame.setText("Save Changes");
 
     }
 
@@ -538,9 +552,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, secondFragment).commit();
                 return true;
 
-            case R.id.publicGames:
-                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, thirdFragment).commit();
-                return true;
+//            case R.id.publicGames:
+//                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, thirdFragment).commit();
+//                return true;
 
 
             case R.id.privateGames:
@@ -692,25 +706,42 @@ public void setVars() {
 
 
     public void addGameButtonClicked(View view) {
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, secondFragment).commit();
    
         game = new Game();
         currentSet = game.getSets().get(0);
-
-
+        updateUI();
         Log.d("Denna", "made new game");
 
 
 
     }
-    public void saveGame(View view){
-       // firebaseHelper.editData("9f3Dyu61T193jM11wTFP", "FAPd2LpUClcM795hmZqh",game.getSets().get(0) );
-        awayTeamName = findViewById(R.id.awayTeamName);
-        homeTeamName = findViewById(R.id.homeTeamName);
-        game.setHomeTeam(homeTeamName.getText().toString());
-        game.setAwayTeam(awayTeamName.getText().toString());
-        firebaseHelper.makeNewGame(game);
+
+    Button saveGame;
+    public void saveGame(View view) {
+
+        if (editingGame == false) {
+            awayTeamName = findViewById(R.id.awayTeamName);
+            homeTeamName = findViewById(R.id.homeTeamName);
+            game.setHomeTeam(homeTeamName.getText().toString());
+            game.setAwayTeam(awayTeamName.getText().toString());
+            firebaseHelper.makeNewGame(game);
+            saveGame = findViewById(R.id.saveButton);
+            saveGame.setText("Save Changes");
+            editingGame = true;
+        }
+        else{
+            firebaseHelper.editData(presentGameDocID, set1DocID, game.getSets().get(0));
+            firebaseHelper.editData(presentGameDocID, set2DocID, game.getSets().get(1));
+            firebaseHelper.editData(presentGameDocID, set3DocID, game.getSets().get(2));
+        }
+
+    }
+
+    public void logOut(View v){
+        firebaseHelper.logOutUser();
+        loggedIn = false;
+        getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, firstFragment).commit();
+        bottomNavigationView.setVisibility(View.INVISIBLE);
     }
 
 }
