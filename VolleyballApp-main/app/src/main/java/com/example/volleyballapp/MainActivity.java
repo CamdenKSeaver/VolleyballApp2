@@ -580,6 +580,8 @@ public void setVars() {
     userNameET = findViewById(R.id.Username);
     passwordET = findViewById(R.id.Password);
 }
+
+    TextView welcome;
     public void signUpClicked(View view) {
         Log.i(TAG, "Sign up clicked");
         if (getValues()) {      // get username and password
@@ -605,6 +607,12 @@ public void setVars() {
                                 bottomNavigationView.setVisibility(View.VISIBLE);
                                 getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, fifthFragment).commit();
                                 loggedIn = true;
+                                welcome = findViewById(R.id.welcome);
+                                setVars();
+                                String userName = userNameET.getText().toString();
+                                int index = userName.indexOf("@");
+                                welcome.setText("Welcome to Volleyball Stats Tracker " + userName.substring(0,index) + "!");
+
 
                             }
                             else {
@@ -658,6 +666,7 @@ public void setVars() {
                                 bottomNavigationView.setVisibility(View.VISIBLE);
                                 getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, fifthFragment).commit();
                                 loggedIn = true;
+
                             }
                             else {
                                 // if log in fails, display a message to the user along with the exception from firebase auth
@@ -709,6 +718,7 @@ public void setVars() {
    
         game = new Game();
         currentSet = game.getSets().get(0);
+        editingGame = false;
         updateUI();
         Log.d("Denna", "made new game");
 
