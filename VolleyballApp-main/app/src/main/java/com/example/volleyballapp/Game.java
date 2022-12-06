@@ -90,6 +90,18 @@ public class Game implements Parcelable {
 
     }
 
+    @Override
+    public String toString() {
+        return "Game{" +
+                "docID='" + docID + '\'' +
+                ", homeTeam='" + homeTeam + '\'' +
+                ", awayTeam='" + awayTeam + '\'' +
+                ", date='" + date + '\'' +
+                ", sets=" + sets +
+                ", publicGame=" + publicGame +
+                '}';
+    }
+
     protected Game(Parcel in) {
     }
 

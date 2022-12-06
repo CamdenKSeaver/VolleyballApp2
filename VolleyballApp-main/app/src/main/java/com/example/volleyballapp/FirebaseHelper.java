@@ -125,7 +125,7 @@ public class FirebaseHelper {
                     public void onSuccess(DocumentReference documentReference) {
                         db.collection("allGames").document(gameDocID)
                                 .collection("sets").document(documentReference.getId())
-                                .update("setDocIC", documentReference.getId());
+                                .update("setDocID", documentReference.getId());
                         if(setNum == 0){
                             MainActivity.set1DocID = documentReference.getId();
                         }
@@ -151,22 +151,22 @@ public class FirebaseHelper {
         this.uid = null;
     }
 
-    public void attachReadDataToUser() {
-        // This is necessary to avoid the issues we ran into with data displaying before it
-        // returned from the asynch method calls
-        if (mAuth.getCurrentUser() != null) {
-            uid = mAuth.getUid();
-            readData(new FirestoreCallback() {
-                @Override
-                public void onCallback(ArrayList<Game> gameList) {
-                    Log.d(TAG, "Inside attachReadDataToUser, onCallback " + gameList.toString());
-                }
-            });
-        }
-        else {
-            Log.d(TAG, "No one logged in");
-        }
-    }
+//    public void attachReadDataToUser() {
+//        // This is necessary to avoid the issues we ran into with data displaying before it
+//        // returned from the asynch method calls
+//        if (mAuth.getCurrentUser() != null) {
+//            uid = mAuth.getUid();
+//        //    readData(new FirestoreCallback() {
+//           //     @Override
+//                public void onCallback(ArrayList<Game> gameList) {
+//                    Log.d(TAG, "Inside attachReadDataToUser, onCallback " + gameList.toString());
+//                }
+//            });
+//        }
+//        else {
+//            Log.d(TAG, "No one logged in");
+//        }
+//    }
 
 //    public void editData(Game game) {
 //        // edit Game game to the database
@@ -221,7 +221,7 @@ public class FirebaseHelper {
                     @Override
                     public void onSuccess(Void unused) {
                         Log.i(TAG, game.getDate() + " successfully deleted");
-                        readData(firestoreCallback);
+                  //      readData(firestoreCallback);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -279,7 +279,7 @@ public class FirebaseHelper {
 //                        db.collection("users").document(uid).collection("myGameList").
 //                                document(documentReference.getId()).update("GameDocID", documentReference.getId());
                         Log.i(TAG, "just added " +game.toString() );
-                        readData(firestoreCallback);
+                     //   readData(firestoreCallback);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -297,18 +297,11 @@ public class FirebaseHelper {
 
 
 
-/* https://www.youtube.com/watch?v=0ofkvm97i0s
-This video is good!!!   Basically he talks about what it means for tasks to be asynchronous
-and how you can create an interface and then using that interface pass an object of the interface
-type from a callback method and access it after the callback method.  It also allows you to delay
-certain things from occurring until after the onSuccess is finished.
-*/
 
-    private void readData(FirestoreCallback firestoreCallback) {
-        myGames.clear();        // empties the AL so that it can get a fresh copy of data
-        db.collection("users").document(uid).collection("myGameList")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//(FirestoreCallback firestoreCallback
+    public void readData() {
+        myGames.clear();
+        db.collection("allGames").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
@@ -317,8 +310,8 @@ certain things from occurring until after the onSuccess is finished.
                                 myGames.add(game);
                             }
 
-                            Log.i(TAG, "Success reading data: "+ myGames.toString());
-                            firestoreCallback.onCallback(myGames);
+                            Log.i(TAG, "Success reading data: "+ myGames.get(0).toString());
+                          //  firestoreCallback.onCallback(myGames);
                         }
                         else {
                             Log.d(TAG, "Error getting documents: " + task.getException());

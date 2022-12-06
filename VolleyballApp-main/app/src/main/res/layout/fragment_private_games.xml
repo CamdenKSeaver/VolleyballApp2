@@ -1,84 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="90dp"
-    tools:context=".MainActivity"
-    android:background="@color/gold">
+    <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:orientation="vertical"
+        tools:context=".MainActivity"
+        android:background="@color/gold">
 
-    <TextView
-        android:id="@+id/displayTeamBlue"
-        android:layout_width="51dp"
-        android:layout_height="26dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:gravity="center"
-        android:text="Blue"
-        android:textSize="18sp"
-        app:layout_constraintHeight_percent=".3"
-        app:layout_constraintStart_toEndOf="@+id/vsTextView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent=".2" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Select a Memory to View, Edit, or Delete"/>
 
-    <TextView
-        android:id="@+id/displayTeamRed"
-        android:layout_width="41dp"
-        android:layout_height="21dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="24dp"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:gravity="center"
-        android:text="Red"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/vsTextView"
-        app:layout_constraintHeight_percent=".3"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent=".175" />
-
-    <TextView
-        android:id="@+id/displayScore"
-        android:layout_width="61dp"
-        android:layout_height="26dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:gravity="center"
-        android:text="Score"
-        android:textSize="18sp"
-        app:layout_constraintHeight_percent=".3"
-        app:layout_constraintStart_toStartOf="@+id/guideline6"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent=".175" />
-
-    <TextView
-        android:id="@+id/vsTextView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="24dp"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:gravity="center"
-        android:text="VS"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintHeight_percent=".3"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent=".05" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline5"
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.30" />
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:onClick="displayData"
+        android:text="button"></Button>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.65" />
+        <ListView
+            android:id="@+id/allGamesListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>

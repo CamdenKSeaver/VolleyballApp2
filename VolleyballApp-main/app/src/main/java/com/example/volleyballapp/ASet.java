@@ -43,6 +43,29 @@ public class ASet implements Parcelable {
         this.setDocID = setDocID;
     }
 
+    @Override
+    public String toString() {
+        return "ASet{" +
+                "setNumber=" + setNumber +
+                ", homeScore=" + homeScore +
+                ", awayScore=" + awayScore +
+                ", homeAce=" + homeAce +
+                ", homeBlock=" + homeBlock +
+                ", homeKill=" + homeKill +
+                ", awayAce=" + awayAce +
+                ", awayBlock=" + awayBlock +
+                ", awayKill=" + awayKill +
+                ", homeOppAtkError=" + homeOppAtkError +
+                ", homeOppServeError=" + homeOppServeError +
+                ", homeOppOtherError=" + homeOppOtherError +
+                ", awayOppAtkError=" + awayOppAtkError +
+                ", awayOppServeError=" + awayOppServeError +
+                ", awayOppOtherError=" + awayOppOtherError +
+                ", gameDocID='" + gameDocID + '\'' +
+                ", setDocID='" + setDocID + '\'' +
+                '}';
+    }
+
     public ASet() {
         setNumber = 0;
         homeScore = 0;

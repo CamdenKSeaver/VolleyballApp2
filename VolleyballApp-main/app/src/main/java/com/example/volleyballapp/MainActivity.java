@@ -17,7 +17,10 @@ import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -475,7 +478,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         homeTeamName = findViewById(R.id.homeTeamName);
 
 
-
+        game.setAwayTeam(awayTeamName.getText().toString());
+        game.setHomeTeam(homeTeamName.getText().toString());
         homeKill.setText(""+ currentSet.getHomeKill() );
         homeScores.setText("" + currentSet.getHomeScore());
         homeAce.setText("" + currentSet.getHomeAce());
@@ -600,7 +604,7 @@ public void setVars() {
                                 Log.d(TAG, userName + " created and logged in");
 
                                 firebaseHelper.addUserToFirestore(userName,firebaseHelper.getmAuth().getUid());
-                                firebaseHelper.attachReadDataToUser();
+                              //  firebaseHelper.attachReadDataToUser();
 
 //                                Intent intent = new Intent(SignInActivity.this, SelectActionActivity.class);
 //                                startActivity(intent);
@@ -669,6 +673,7 @@ public void setVars() {
 
                             }
                             else {
+                                Toast.makeText(MainActivity.this, "Incorrect Username or Password", Toast.LENGTH_SHORT).show();
                                 // if log in fails, display a message to the user along with the exception from firebase auth
                                 Log.d(TAG, "Log in failed for " + userName + " " + password +
                                         " because of \n"+ task.toString());
@@ -754,6 +759,11 @@ public void setVars() {
         bottomNavigationView.setVisibility(View.INVISIBLE);
     }
 
+
+
+    public void displayData(View view){
+firebaseHelper.readData();
+    }
 }
 
 
