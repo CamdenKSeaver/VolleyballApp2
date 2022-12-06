@@ -762,7 +762,18 @@ public void setVars() {
 
 
     public void displayData(View view){
-firebaseHelper.readData();
+        
+        ArrayList<Game> dataToDisplay = firebaseHelper.readData();
+        ListView myGameListView = findViewById(R.id.allGamesListView);
+        // get ArrayList of data from firebase
+        ArrayList<Game> myList = dataToDisplay;
+        // bind data to the ArrayAdapter (this is a default adapter
+        // The text shown is based on the Game class toString
+        ArrayAdapter<Game> listAdapter = new ArrayAdapter<>(
+                this, android.R.layout.simple_list_item_1, myList);
+        // attaches the listAdapter to my listView
+        myGameListView.setAdapter(listAdapter);
+
     }
 }
 

@@ -299,15 +299,36 @@ public class FirebaseHelper {
 
 
 //(FirestoreCallback firestoreCallback
-    public void readData() {
+    public ArrayList<Game> readData() {
         myGames.clear();
         db.collection("allGames").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (DocumentSnapshot doc: task.getResult()) {
-                                Game game = doc.toObject(Game.class);
+                                Game game = new Game();
+                                String names = (String) doc.get("GameTitle");
+                                int index = names.indexOf(" ");
+                                game.setHomeTeam(names.substring(0,index));
+                                game.setAwayTeam(names.substring(index+3));
+                                db.collection("allGames").
+                                        document((String) doc.get("gameDocID")).collection("sets")
+                                        .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                if (task.isSuccessful()) {
+                                                    for (DocumentSnapshot doc : task.getResult()) {
+                                                        ASet set = doc.toObject(ASet.class);
+                                                        Log.i(TAG, "Success reading set: "+ set.toString());
+                                                        game.getSets().add(set);
+                                                    }
+                                                }
+                                            }
+                                        });
+
+
                                 myGames.add(game);
+                                Log.i(TAG, "Success reading data: "+ game.toString());
                             }
 
                             Log.i(TAG, "Success reading data: "+ myGames.get(0).toString());
@@ -318,6 +339,8 @@ public class FirebaseHelper {
                         }
                     }
                 });
+        return myGames;
+
     }
 
 
