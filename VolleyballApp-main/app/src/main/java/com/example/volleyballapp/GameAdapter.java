@@ -24,8 +24,8 @@ public class GameAdapter extends ArrayAdapter<Game> {
 
         //  TextView tvGameDesc = (TextView) convertView.findViewById(R.id.GameDescription);
 
-        tvGameName.setText(myGame.getHomeTeam());
-        tvGameName2.setText(myGame.getAwayTeam());
+        tvGameName.setText(myGame.getHomeTeam() + myGame.getSets().get(0).getHomeKill());
+        tvGameName2.setText(myGame.getAwayTeam() + myGame.getSets().get(0).getAwayKill());
         //tvGameDesc.setText(myGame.getDesc());
 
         return convertView;

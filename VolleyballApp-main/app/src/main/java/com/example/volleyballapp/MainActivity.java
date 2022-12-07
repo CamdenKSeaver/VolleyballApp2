@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     public static String set1DocID;
     public static String set2DocID;
     public static String set3DocID;
-    Game game;
+    public static Game currentGame;
     ASet currentSet;
     BottomNavigationView bottomNavigationView;
     boolean loggedIn =false;
@@ -113,8 +113,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
 
-        game = new Game();
-        currentSet = game.getSets().get(0);
+        currentGame = new Game();
+        currentSet = currentGame.getSets().get(0);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
@@ -480,8 +480,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         homeTeamName = findViewById(R.id.homeTeamName);
 
 
-        game.setAwayTeam(awayTeamName.getText().toString());
-        game.setHomeTeam(homeTeamName.getText().toString());
+        currentGame.setAwayTeam(awayTeamName.getText().toString());
+        currentGame.setHomeTeam(homeTeamName.getText().toString());
         homeKill.setText(""+ currentSet.getHomeKill() );
         homeScores.setText("" + currentSet.getHomeScore());
         homeAce.setText("" + currentSet.getHomeAce());
@@ -497,8 +497,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         awayAtkErr.setText("" + currentSet.getAwayOppAtkError());
         awaySrvErr.setText("" + currentSet.getAwayOppServeError());
         awayOthErr.setText("" + currentSet.getAwayOppOtherError());
-        awayTeamName.setText(game.getAwayTeam());
-        homeTeamName.setText(game.getHomeTeam());
+        awayTeamName.setText(currentGame.getAwayTeam());
+        homeTeamName.setText(currentGame.getHomeTeam());
         if(editingGame == false){
             saveGame.setText("Save Game");
 
@@ -513,19 +513,19 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         switch (v.getId()) {
 
             case R.id.Set1:
-                currentSet = game.getSets().get(0);
+                currentSet = currentGame.getSets().get(0);
                 updateUI();
                 setNumber.setText("1");
                 break;
 
             case R.id.Set2:
-                currentSet = game.getSets().get(1);
+                currentSet = currentGame.getSets().get(1);
                 updateUI();
                 setNumber.setText("2");
                 break;
 
             case R.id.Set3:
-                currentSet = game.getSets().get(2);
+                currentSet = currentGame.getSets().get(2);
                 updateUI();
                 setNumber.setText("3");
                 break;
@@ -725,8 +725,8 @@ public void setVars() {
 
     public void addGameButtonClicked(View view) {
    
-        game = new Game();
-        currentSet = game.getSets().get(0);
+        currentGame = new Game();
+        currentSet = currentGame.getSets().get(0);
         editingGame = false;
         updateUI();
         Log.d("Denna", "made new game");
@@ -737,21 +737,21 @@ public void setVars() {
 
     Button saveGame;
     public void saveGame(View view) {
-
+        awayTeamName = findViewById(R.id.awayTeamName);
+        homeTeamName = findViewById(R.id.homeTeamName);
         if (editingGame == false) {
-            awayTeamName = findViewById(R.id.awayTeamName);
-            homeTeamName = findViewById(R.id.homeTeamName);
-            game.setHomeTeam(homeTeamName.getText().toString());
-            game.setAwayTeam(awayTeamName.getText().toString());
-            firebaseHelper.makeNewGame(game);
+
+            currentGame.setHomeTeam(homeTeamName.getText().toString());
+            currentGame.setAwayTeam(awayTeamName.getText().toString());
+            firebaseHelper.makeNewGame(currentGame);
             saveGame = findViewById(R.id.saveButton);
             saveGame.setText("Save Changes");
             editingGame = true;
         }
         else{
-            firebaseHelper.editData(presentGameDocID, set1DocID, game.getSets().get(0));
-            firebaseHelper.editData(presentGameDocID, set2DocID, game.getSets().get(1));
-            firebaseHelper.editData(presentGameDocID, set3DocID, game.getSets().get(2));
+            firebaseHelper.editData(presentGameDocID, set1DocID, currentGame.getSets().get(0));
+            firebaseHelper.editData(presentGameDocID, set2DocID, currentGame.getSets().get(1));
+            firebaseHelper.editData(presentGameDocID, set3DocID, currentGame.getSets().get(2));
         }
 
     }
@@ -771,6 +771,16 @@ public void setVars() {
         ArrayList<Game> dataToDisplay = new ArrayList<Game>();
 
         ListView myGamesListView = findViewById(R.id.allGamesListView);
+        myGamesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+                currentGame = dataToDisplay.get(position);
+                currentSet = currentGame.getSets().get(0);
+                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, secondFragment).commitNow();
+                updateUI();
+            }
+        });
 
         GameAdapter myGameAdapter = new GameAdapter(this, dataToDisplay);
 

@@ -320,17 +320,20 @@ public class FirebaseHelper {
                                                 if (task.isSuccessful()) {
                                                     for (DocumentSnapshot doc : task.getResult()) {
                                                         ASet set = doc.toObject(ASet.class);
-                                                        Log.i(TAG, "Success reading set: "+ set.toString());
-                                                        game.getSets().add(set);
+                                                        int setNumber = set.getSetNumber() - 1;
+
+                                                        game.getSets().set(setNumber,set);
+                                                        Log.i(TAG, "Success reading set: "+ game.getSets().get(setNumber).toString());
                                                     }
+                                                    dataToDisplay.add(game);
+                                                    myGameAdapter.notifyDataSetChanged();
                                                 }
                                             }
                                         });
 
 
-                                dataToDisplay.add(game);
-                                myGameAdapter.notifyDataSetChanged();
-                               // Log.i(TAG, "Success adding game to myGames: "+ myGames.get(0).toString());
+
+//
                             }
 
                            // Log.i(TAG, "Success reading data: "+ myGames.get(0).toString());
