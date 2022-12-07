@@ -20,12 +20,16 @@ public class GameAdapter extends ArrayAdapter<Game> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.activity_listview,parent, false);
         }
         TextView tvGameName =  convertView.findViewById(R.id.GameName);
-        TextView tvGameName2 =  convertView.findViewById(R.id.GameName2);
+        TextView tvGameName2 =  convertView.findViewById(R.id.Score);
 
         //  TextView tvGameDesc = (TextView) convertView.findViewById(R.id.GameDescription);
 
-        tvGameName.setText(myGame.getHomeTeam() + myGame.getSets().get(0).getHomeKill());
-        tvGameName2.setText(myGame.getAwayTeam() + myGame.getSets().get(0).getAwayKill());
+        tvGameName.setText(myGame.getHomeTeam() + " vs " + myGame.getAwayTeam());
+        tvGameName2.setText("Set 1: " + myGame.getSets().get(0).getHomeScore() + " - " + myGame.getSets().get(0).getAwayScore() +
+                "\nSet 2: " + myGame.getSets().get(1).getHomeScore() + " - " + myGame.getSets().get(1).getAwayScore() +
+                "\nSet 3: " + myGame.getSets().get(2).getHomeScore() + " - " + myGame.getSets().get(2).getAwayScore());
+
+
         //tvGameDesc.setText(myGame.getDesc());
 
         return convertView;

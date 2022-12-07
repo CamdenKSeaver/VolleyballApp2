@@ -76,6 +76,11 @@ public class Game implements Parcelable {
         this.publicGame = publicGame;
         this.docID = docID;
     }
+
+    public void setDocID(String docID) {
+        this.docID = docID;
+    }
+
     public Game(){
         homeTeam ="";
         awayTeam = "";

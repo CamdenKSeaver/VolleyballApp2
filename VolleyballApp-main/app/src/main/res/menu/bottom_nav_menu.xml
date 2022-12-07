@@ -14,7 +14,7 @@
 
     <item
         android:id="@+id/privateGames"
-        android:title="Private"
+        android:title="All Games"
         android:icon="@drawable/ic_launcher_lock_foreground"
         />
 </menu>

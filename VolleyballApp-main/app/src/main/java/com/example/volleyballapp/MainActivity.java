@@ -479,7 +479,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         awayTeamName = findViewById(R.id.awayTeamName);
         homeTeamName = findViewById(R.id.homeTeamName);
 
-
+        homeTeamName.setText(currentGame.getHomeTeam());
+        awayTeamName.setText(currentGame.getAwayTeam());
         currentGame.setAwayTeam(awayTeamName.getText().toString());
         currentGame.setHomeTeam(homeTeamName.getText().toString());
         homeKill.setText(""+ currentSet.getHomeKill() );
@@ -555,7 +556,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
 
             case R.id.scoreboard:
-                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, secondFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, secondFragment).commitNow();
+                updateUI();
                 return true;
 
 //            case R.id.publicGames:
@@ -777,7 +779,14 @@ public void setVars() {
 
                 currentGame = dataToDisplay.get(position);
                 currentSet = currentGame.getSets().get(0);
+                presentGameDocID = currentGame.getDocID();
+
+                set1DocID = currentGame.getSets().get(0).getSetDocID();
+                set2DocID = currentGame.getSets().get(1).getSetDocID();
+                set3DocID = currentGame.getSets().get(2).getSetDocID();
+                Log.i(TAG,presentGameDocID + " " + set2DocID);
                 getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, secondFragment).commitNow();
+                editingGame = true;
                 updateUI();
             }
         });

@@ -309,8 +309,8 @@ public class FirebaseHelper {
                             for (DocumentSnapshot doc: task.getResult()) {
                                 Game game = new Game();
                                 String names = (String) doc.get("GameTitle");
-                                int index = names.indexOf(" ");
-                                game.setHomeTeam(names.substring(0,index));
+                                int index = names.indexOf("vs");
+                                game.setHomeTeam(names.substring(0,index - 1));
                                 game.setAwayTeam(names.substring(index+3));
                                 db.collection("allGames").
                                         document((String) doc.get("gameDocID")).collection("sets")
@@ -318,11 +318,12 @@ public class FirebaseHelper {
                                             @Override
                                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                                 if (task.isSuccessful()) {
-                                                    for (DocumentSnapshot doc : task.getResult()) {
-                                                        ASet set = doc.toObject(ASet.class);
+                                                    for (DocumentSnapshot sdoc : task.getResult()) {
+                                                        ASet set = sdoc.toObject(ASet.class);
                                                         int setNumber = set.getSetNumber() - 1;
-
+                                                        game.setDocID(doc.get("gameDocID").toString());
                                                         game.getSets().set(setNumber,set);
+                                                        game.getSets().get(setNumber).setSetDocID(sdoc.getId().toString());
                                                         Log.i(TAG, "Success reading set: "+ game.getSets().get(setNumber).toString());
                                                     }
                                                     dataToDisplay.add(game);
