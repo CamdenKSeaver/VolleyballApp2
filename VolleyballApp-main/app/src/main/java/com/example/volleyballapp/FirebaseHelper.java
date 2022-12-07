@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -299,7 +300,7 @@ public class FirebaseHelper {
 
 
 //(FirestoreCallback firestoreCallback
-    public ArrayList<Game> readData() {
+    public ArrayList<Game> readData(GameAdapter myGameAdapter, ArrayList<Game> dataToDisplay) {
         myGames.clear();
         db.collection("allGames").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -327,18 +328,20 @@ public class FirebaseHelper {
                                         });
 
 
-                                myGames.add(game);
-                                Log.i(TAG, "Success reading data: "+ game.toString());
+                                dataToDisplay.add(game);
+                                myGameAdapter.notifyDataSetChanged();
+                               // Log.i(TAG, "Success adding game to myGames: "+ myGames.get(0).toString());
                             }
 
-                            Log.i(TAG, "Success reading data: "+ myGames.get(0).toString());
-                          //  firestoreCallback.onCallback(myGames);
+                           // Log.i(TAG, "Success reading data: "+ myGames.get(0).toString());
+                          //firestoreCallback.onCallback(myGames);
                         }
                         else {
                             Log.d(TAG, "Error getting documents: " + task.getException());
                         }
                     }
                 });
+        Log.i(TAG, "Size of myGames is " + myGames.size());
         return myGames;
 
     }

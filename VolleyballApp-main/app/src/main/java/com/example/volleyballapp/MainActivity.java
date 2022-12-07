@@ -121,6 +121,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         bottomNavigationView.setSelectedItemId(R.id.home);
 
 
+
+
     }
 
 
@@ -562,7 +564,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
             case R.id.privateGames:
-                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, fourthFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, fourthFragment).commitNow();
+
+                displayData2();
                 return true;
         }
 return true;
@@ -761,18 +765,20 @@ public void setVars() {
 
 
 
-    public void displayData(View view){
-        
-        ArrayList<Game> dataToDisplay = firebaseHelper.readData();
-        ListView myGameListView = findViewById(R.id.allGamesListView);
-        // get ArrayList of data from firebase
-        ArrayList<Game> myList = dataToDisplay;
-        // bind data to the ArrayAdapter (this is a default adapter
-        // The text shown is based on the Game class toString
-        ArrayAdapter<Game> listAdapter = new ArrayAdapter<>(
-                this, android.R.layout.simple_list_item_1, myList);
-        // attaches the listAdapter to my listView
-        myGameListView.setAdapter(listAdapter);
+
+    public void displayData2(){
+
+        ArrayList<Game> dataToDisplay = new ArrayList<Game>();
+
+        ListView myGamesListView = findViewById(R.id.allGamesListView);
+
+        GameAdapter myGameAdapter = new GameAdapter(this, dataToDisplay);
+
+
+        myGamesListView.setAdapter(myGameAdapter);
+        firebaseHelper.readData(myGameAdapter, dataToDisplay);
+        //myGameAdapter.notifyDataSetChanged();
+
 
     }
 }

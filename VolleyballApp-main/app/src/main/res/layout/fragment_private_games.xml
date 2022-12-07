@@ -3,10 +3,11 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".MainActivity"
-        android:background="@color/gold">
+        android:background="@color/white"
+    android:id="@+id/privateGames">
     <ListView
         android:id="@+id/allGamesListView"
         android:layout_width="match_parent"
@@ -14,23 +15,7 @@
         android:layout_weight="1"
         />
 
-        <TextView
-            android:id="@+id/GameName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:text="Select a Memory to View, Edit, or Delete"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:onClick="displayData"
-        android:text="button"></Button>
 
 
 
