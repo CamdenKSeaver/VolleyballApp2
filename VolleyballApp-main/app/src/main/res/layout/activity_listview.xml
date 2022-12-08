@@ -9,15 +9,15 @@
 
     <TextView
         android:id="@+id/GameName"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:layout_width="210dp"
+        android:layout_height="match_parent"
         android:layout_weight ="1"
         android:text="Home team"
         android:textColor="@color/green"
         android:fontFamily="sans-serif-condensed-medium"
         android:textSize="25sp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="50dp"
+       android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />

@@ -180,7 +180,7 @@ public class FirebaseHelper {
 //        });
 //    }
 //FirestoreCallback firestoreCallback
-    public void editData(String gamedocID, String setId, ASet set ) {
+    public void editData(String gamedocID, String setId, ASet set, String home, String away ) {
 
         db.collection("allGames").document(gamedocID).collection("sets")
                 .document(setId)
@@ -198,6 +198,8 @@ public class FirebaseHelper {
                         Log.i(TAG, "Error updating document", e);
                     }
                 });
+
+        db.collection("allGames").document(gamedocID).update("GameTitle", home + " vs " + away);
     }
 
     public void deleteData(Game game) {

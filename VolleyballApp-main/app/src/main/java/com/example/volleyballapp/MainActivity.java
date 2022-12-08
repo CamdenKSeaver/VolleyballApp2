@@ -1,62 +1,28 @@
 package com.example.volleyballapp;
 
-import java.io.*;
-import java.util.Set;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 
 
-
-import static androidx.core.content.ContextCompat.startActivity;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Application;
-import android.app.FragmentTransaction;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthEmailException;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.Executor;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -515,18 +481,30 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
             case R.id.Set1:
                 currentSet = currentGame.getSets().get(0);
+                awayTeamName = findViewById(R.id.awayTeamName);
+                homeTeamName = findViewById(R.id.homeTeamName);
+                currentGame.setAwayTeam(awayTeamName.getText().toString());
+                currentGame.setHomeTeam(homeTeamName.getText().toString());
                 updateUI();
                 setNumber.setText("1");
                 break;
 
             case R.id.Set2:
                 currentSet = currentGame.getSets().get(1);
+                awayTeamName = findViewById(R.id.awayTeamName);
+                homeTeamName = findViewById(R.id.homeTeamName);
+                currentGame.setAwayTeam(awayTeamName.getText().toString());
+                currentGame.setHomeTeam(homeTeamName.getText().toString());
                 updateUI();
                 setNumber.setText("2");
                 break;
 
             case R.id.Set3:
                 currentSet = currentGame.getSets().get(2);
+                awayTeamName = findViewById(R.id.awayTeamName);
+                homeTeamName = findViewById(R.id.homeTeamName);
+                currentGame.setAwayTeam(awayTeamName.getText().toString());
+                currentGame.setHomeTeam(homeTeamName.getText().toString());
                 updateUI();
                 setNumber.setText("3");
                 break;
@@ -540,13 +518,22 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
 
-
+public boolean onScoreBoard = false;
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
             case R.id.home:
+
+                if (onScoreBoard == true){
+                    homeTeamName = findViewById(R.id.homeTeamName);
+                    awayTeamName = findViewById(R.id.awayTeamName);
+                    currentGame.setHomeTeam(homeTeamName.getText().toString());
+                    currentGame.setAwayTeam(awayTeamName.getText().toString());
+                    onScoreBoard= false;
+
+                }
                 if(loggedIn == false){
                     getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, firstFragment).commit();
                 }
@@ -556,7 +543,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
 
             case R.id.scoreboard:
+                onScoreBoard= true;
+
                 getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, secondFragment).commitNow();
+                homeTeamName = findViewById(R.id.homeTeamName);
+                awayTeamName = findViewById(R.id.awayTeamName);
+
                 updateUI();
                 return true;
 
@@ -566,6 +558,16 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
             case R.id.privateGames:
+
+                if (onScoreBoard == true){
+                    homeTeamName = findViewById(R.id.homeTeamName);
+                    awayTeamName = findViewById(R.id.awayTeamName);
+                    currentGame.setHomeTeam(homeTeamName.getText().toString());
+                    currentGame.setAwayTeam(awayTeamName.getText().toString());
+                    onScoreBoard= false;
+
+                }
+
                 getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, fourthFragment).commitNow();
 
                 displayData2();
@@ -573,6 +575,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
 return true;
     }
+
+
 
 
 //FIREBASE
@@ -615,13 +619,13 @@ public void setVars() {
 //                                Intent intent = new Intent(SignInActivity.this, SelectActionActivity.class);
 //                                startActivity(intent);
                                 bottomNavigationView.setVisibility(View.VISIBLE);
-                                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, fifthFragment).commit();
+                                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, fifthFragment).commitNow();
                                 loggedIn = true;
                                 welcome = findViewById(R.id.welcome);
-                                setVars();
-                                String userName = userNameET.getText().toString();
-                                int index = userName.indexOf("@");
-                                welcome.setText("Welcome to Volleyball Stats Tracker " + userName.substring(0,index) + "!");
+
+                                welcome.setText("Welcome to Volleyball Stats Tracker " + userName + "!");
+
+
 
 
                             }
@@ -674,7 +678,11 @@ public void setVars() {
 
                                 Log.d(TAG, userName + " logged in");
                                 bottomNavigationView.setVisibility(View.VISIBLE);
-                                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, fifthFragment).commit();
+                                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, fifthFragment).commitNow();
+
+                                welcome = findViewById(R.id.welcome);
+
+                                welcome.setText("Welcome to Volleyball Stats Tracker " + userName+ "!");
                                 loggedIn = true;
 
                             }
@@ -736,6 +744,10 @@ public void setVars() {
 
 
     }
+    public void homeNewGame(View view){
+        getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, secondFragment).commitNow();
+        addGameButtonClicked(view);
+    }
 
     Button saveGame;
     public void saveGame(View view) {
@@ -751,9 +763,12 @@ public void setVars() {
             editingGame = true;
         }
         else{
-            firebaseHelper.editData(presentGameDocID, set1DocID, currentGame.getSets().get(0));
-            firebaseHelper.editData(presentGameDocID, set2DocID, currentGame.getSets().get(1));
-            firebaseHelper.editData(presentGameDocID, set3DocID, currentGame.getSets().get(2));
+            currentGame.setAwayTeam(awayTeamName.getText().toString());
+            currentGame.setHomeTeam(homeTeamName.getText().toString());
+            firebaseHelper.editData(presentGameDocID, set1DocID, currentGame.getSets().get(0),currentGame.getHomeTeam(),currentGame.getAwayTeam());
+            firebaseHelper.editData(presentGameDocID, set2DocID, currentGame.getSets().get(1),currentGame.getHomeTeam(),currentGame.getAwayTeam());
+            firebaseHelper.editData(presentGameDocID, set3DocID, currentGame.getSets().get(2),currentGame.getHomeTeam(),currentGame.getAwayTeam());
+
         }
 
     }

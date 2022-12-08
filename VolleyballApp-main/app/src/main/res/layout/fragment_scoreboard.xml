@@ -241,6 +241,8 @@
         android:layout_marginLeft="1dp"
         android:inputType="textPersonName"
         android:hint="Team Name"
+        android:freezesText="true"
+
         android:gravity="center_horizontal"
         app:layout_constraintLeft_toRightOf="@id/guideline"
         app:layout_constraintBottom_toTopOf="@id/awayScoreButton"
@@ -254,8 +256,11 @@
         android:fontFamily="sans-serif-condensed-medium"
         android:gravity="center_horizontal"
         android:layout_marginRight="1dp"
+
         android:inputType="textPersonName"
         android:hint="Team Name"
+        android:freezesText="true"
+
         app:layout_constraintRight_toLeftOf="@id/guideline"
         app:layout_constraintBottom_toTopOf="@id/homeScoreButton"
         />
