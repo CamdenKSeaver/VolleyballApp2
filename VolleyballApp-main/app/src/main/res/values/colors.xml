@@ -13,4 +13,5 @@
     <color name = "secondaryYellow">#fff438</color>
     <color name = "red"> #D22B2B</color>
     <color name = "blue">#0064FF</color>
+    <color name = "goldFade">#99FFD700</color>
 </resources>
