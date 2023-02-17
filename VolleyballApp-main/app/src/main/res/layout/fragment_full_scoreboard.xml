@@ -1,0 +1,731 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="205dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.50"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/homeScoreButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginRight="2dp"
+        android:backgroundTint="@color/red"
+        android:gravity="center_horizontal"
+        android:text="Score"
+        app:layout_constraintHeight_percent="0.28"
+        app:layout_constraintRight_toLeftOf="@id/guideline"
+        android:onClick="onClick"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent=".25"
+         />
+
+    <Button
+        android:id="@+id/awayScoreButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="2dp"
+        android:onClick="onClick"
+        app:layout_constraintTop_toBottomOf="@id/awayTeamName"
+        android:layout_marginTop="110dp"
+        android:backgroundTint="@color/blue"
+        android:gravity="center_horizontal"
+        android:text="Score"
+        app:layout_constraintHeight_percent="0.28"
+        app:layout_constraintWidth_percent=".25"
+        app:layout_constraintLeft_toRightOf="@id/guideline"
+
+        />
+
+    <Button
+        android:id="@+id/homeKillButton"
+        app:layout_constraintWidth_percent=".235"
+        app:layout_constraintHeight_percent=".1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+       app:layout_constraintTop_toBottomOf="@id/homeTeamName"
+        android:layout_marginTop="110dp"
+        app:layout_constraintRight_toLeftOf="@id/homeScoreButton"
+        android:layout_marginRight="2dp"
+        android:backgroundTint="@color/red"
+        android:text="kill"
+        android:onClick="onClick"
+
+
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/homeAceButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="-5dp"
+        android:layout_marginRight="2dp"
+        android:backgroundTint="@color/red"
+        android:gravity="center_horizontal"
+        android:text="Ace"
+        android:onClick="onClick"
+        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintRight_toLeftOf="@id/homeScoreButton"
+        app:layout_constraintTop_toBottomOf="@id/homeKillButton"
+        app:layout_constraintWidth_percent=".235" />
+
+    <Button
+        android:id="@+id/homeBlockButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginRight="2dp"
+        android:backgroundTint="@color/red"
+        android:gravity="center_horizontal"
+        android:text="Block"
+        android:layout_marginTop="-5dp"
+        android:onClick="onClick"
+        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintRight_toLeftOf="@id/homeScoreButton"
+        app:layout_constraintTop_toBottomOf="@id/homeAceButton"
+        app:layout_constraintWidth_percent=".235" />
+    <Button
+        android:id="@+id/awayKillButton"
+        app:layout_constraintWidth_percent=".235"
+        app:layout_constraintHeight_percent=".1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="120dp"
+
+        android:onClick="onClick"
+        app:layout_constraintLeft_toRightOf="@id/awayScoreButton"
+        android:layout_marginLeft="2dp"
+        android:backgroundTint="@color/blue"
+        android:text="kill"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/awayAceButton"
+        app:layout_constraintWidth_percent=".235"
+        app:layout_constraintHeight_percent=".1"
+        android:layout_width="0dp"
+        android:onClick="onClick"
+        android:layout_height="0dp"
+        android:layout_marginTop="-5dp"
+
+        android:layout_marginLeft="2dp"
+        android:backgroundTint="@color/blue"
+        android:gravity="center_horizontal"
+        android:text="Ace"
+
+        app:layout_constraintLeft_toRightOf="@id/awayScoreButton"
+        app:layout_constraintTop_toBottomOf="@id/homeKillButton" />
+
+    <Button
+        android:id="@+id/awayBlockButton"
+        app:layout_constraintWidth_percent=".235"
+        app:layout_constraintHeight_percent=".1"
+        android:layout_width="0dp"
+
+        android:layout_height="0dp"
+        android:layout_marginTop="-5dp"
+        android:onClick="onClick"
+        android:layout_marginLeft="2dp"
+        android:backgroundTint="@color/blue"
+        android:gravity="center_horizontal"
+        android:text="Block"
+        app:layout_constraintLeft_toRightOf="@id/awayScoreButton"
+        app:layout_constraintTop_toBottomOf="@id/homeAceButton" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <Button
+        android:id="@+id/homeOppAtkErrButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginRight="1dp"
+        android:backgroundTint="@color/red"
+        android:gravity="center_vertical"
+        android:onClick="onClick"
+        android:text="Opp Atk Error"
+        android:textAllCaps="false"
+        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintRight_toLeftOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/homeScoreButton"
+        android:layout_marginTop="-3dp"
+        app:layout_constraintWidth_percent=".49" />
+
+    <Button
+        android:id="@+id/homeOppSrvErrButton"
+        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintWidth_percent=".49"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/red"
+        android:onClick="onClick"
+        android:gravity="center_vertical"
+        android:text="Opp Srv Error"
+        app:layout_constraintTop_toBottomOf="@id/homeOppAtkErrButton"
+        android:textAllCaps="false"
+        android:layout_marginRight="1dp"
+        android:layout_marginTop="-6dp"
+        app:layout_constraintRight_toLeftOf="@id/guideline"
+        tools:layout_editor_absoluteY="321dp" />
+    <Button
+        android:id="@+id/homeOppOthErrButton"
+        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintWidth_percent=".49"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/red"
+        android:gravity="center_vertical"
+        android:onClick="onClick"
+        android:text="Opp Other Error"
+        app:layout_constraintTop_toBottomOf="@id/homeOppSrvErrButton"
+        android:textAllCaps="false"
+        android:layout_marginRight="1dp"
+        android:layout_marginTop="-6dp"
+        app:layout_constraintRight_toLeftOf="@id/guideline"
+        tools:layout_editor_absoluteY="321dp" />
+
+    <Button
+        android:id="@+id/awayOppAtkErrButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/blue"
+        android:gravity="center_vertical"
+        android:text="Opp Atk Error"
+        android:textAllCaps="false"
+        android:onClick="onClick"
+        android:layout_marginTop="-3dp"
+        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintLeft_toRightOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/awayScoreButton"
+        app:layout_constraintWidth_percent=".49" />
+    <Button
+        android:id="@+id/awayOppSrvErrButton"
+        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintWidth_percent=".49"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/blue"
+        android:gravity="center_vertical"
+        android:onClick="onClick"
+        android:layout_marginTop="-6dp"
+        android:text="Opp Srv Error"
+        app:layout_constraintTop_toBottomOf="@id/awayOppAtkErrButton"
+        android:textAllCaps="false"
+        android:layout_marginRight="1dp"
+        app:layout_constraintLeft_toRightOf="@id/guideline"
+        tools:layout_editor_absoluteY="321dp" />
+    <Button
+        android:id="@+id/awayOppOthErrButton"
+        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintWidth_percent=".49"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/blue"
+        android:gravity="center_vertical"
+        android:layout_marginTop="-6dp"
+        android:onClick="onClick"
+        android:text="Opp Other Error"
+        app:layout_constraintTop_toBottomOf="@id/awayOppSrvErrButton"
+        android:textAllCaps="false"
+        android:layout_marginRight="1dp"
+        app:layout_constraintLeft_toRightOf="@id/guideline"
+        tools:layout_editor_absoluteY="321dp" />
+
+    <EditText
+        android:id="@+id/awayTeamName"
+        app:layout_constraintHeight_percent=".08"
+        app:layout_constraintWidth_percent=".49"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:layout_marginLeft="1dp"
+        android:inputType="textPersonName"
+        android:hint="Team Name"
+        android:freezesText="true"
+
+        android:gravity="center_horizontal"
+        app:layout_constraintLeft_toRightOf="@id/guideline"
+        app:layout_constraintBottom_toTopOf="@id/awayScoreButton"
+        />
+    <EditText
+        android:id="@+id/homeTeamName"
+        app:layout_constraintHeight_percent=".08"
+        app:layout_constraintWidth_percent=".49"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:gravity="center_horizontal"
+        android:layout_marginRight="1dp"
+
+        android:inputType="textPersonName"
+        android:hint="Team Name"
+        android:freezesText="true"
+
+        app:layout_constraintRight_toLeftOf="@id/guideline"
+        app:layout_constraintBottom_toTopOf="@id/homeScoreButton"
+        />
+
+    <Button
+        android:id="@+id/saveButton"
+        app:layout_constraintWidth_percent=".245"
+        app:layout_constraintHeight_percent=".11"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Save Game"
+        android:textAllCaps="false"
+        android:textSize="13sp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:onClick="saveGame"
+        app:layout_constraintBottom_toTopOf="@id/awayTeamName"
+        android:textColor="@color/gold"
+        android:layout_marginLeft="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintLeft_toRightOf="@id/guideline"
+        tools:layout_editor_absoluteX="261dp"
+        tools:layout_editor_absoluteY="24dp" />
+    <Button
+        android:id="@+id/newGameButton"
+        app:layout_constraintWidth_percent=".245"
+        app:layout_constraintHeight_percent=".11"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="New Game"
+        android:textAllCaps="false"
+        android:textSize="13sp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:onClick="addGameButtonClicked"
+        app:layout_constraintBottom_toTopOf="@id/awayTeamName"
+        android:textColor="@color/gold"
+        android:layout_marginLeft="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintLeft_toRightOf="@id/saveButton"
+        tools:layout_editor_absoluteX="261dp"
+        tools:layout_editor_absoluteY="24dp" />
+
+    <TextView
+        android:id="@+id/homeScore"
+        app:layout_constraintWidth_percent=".25"
+        app:layout_constraintHeight_percent="0.33"
+        android:layout_width="0dp"
+android:freezesText="true"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:elevation="10dp"
+        android:text="0"
+        android:textColor="@color/black"
+        android:textSize="50dp"
+        app:layout_constraintBottom_toBottomOf="@id/homeScoreButton"
+        app:layout_constraintLeft_toLeftOf="@id/homeScoreButton"/>
+    <TextView
+        android:id="@+id/awayScore"
+        app:layout_constraintWidth_percent=".25"
+        app:layout_constraintHeight_percent="0.33"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:elevation="10dp"
+        android:text="0"
+        android:freezesText="true"
+        android:textColor="@color/black"
+        android:textSize="50dp"
+        app:layout_constraintBottom_toBottomOf="@id/awayScoreButton"
+        app:layout_constraintLeft_toLeftOf="@id/awayScoreButton"/>
+    <TextView
+        android:id="@+id/homeKill"
+        app:layout_constraintWidth_percent=".235"
+        app:layout_constraintHeight_percent=".11"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:freezesText="true"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="-35dp"
+        android:elevation="10dp"
+        android:text="0"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="@id/homeKillButton"
+        app:layout_constraintLeft_toLeftOf="@id/homeKillButton"/>
+    <TextView
+        android:id="@+id/awayKill"
+        app:layout_constraintWidth_percent=".235"
+        app:layout_constraintHeight_percent=".11"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="-35dp"
+        android:elevation="10dp"
+        android:text="0"
+        android:freezesText="true"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="@id/awayKillButton"
+        app:layout_constraintLeft_toLeftOf="@id/awayKillButton"/>
+    <TextView
+        android:id="@+id/awayAce"
+        app:layout_constraintWidth_percent=".235"
+        app:layout_constraintHeight_percent=".11"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="-35dp"
+        android:elevation="10dp"
+        android:text="0"
+        android:freezesText="true"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="@id/awayAceButton"
+        app:layout_constraintLeft_toLeftOf="@id/awayAceButton"/>
+    <TextView
+        android:id="@+id/homeAce"
+        app:layout_constraintWidth_percent=".235"
+        app:layout_constraintHeight_percent=".11"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="-35dp"
+        android:elevation="10dp"
+
+        android:text="0"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="@id/homeAceButton"
+        app:layout_constraintLeft_toLeftOf="@id/homeAceButton"/>
+    <TextView
+        android:id="@+id/homeBlock"
+        app:layout_constraintWidth_percent=".235"
+        app:layout_constraintHeight_percent=".11"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="-35dp"
+        android:elevation="10dp"
+        android:text="0"
+        android:freezesText="true"
+        android:textColor="@color/black"
+        android:saveEnabled="false"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="@id/homeBlockButton"
+        app:layout_constraintLeft_toLeftOf="@id/homeBlockButton"/>
+    <TextView
+        android:id="@+id/awayBlock"
+        app:layout_constraintWidth_percent=".235"
+        app:layout_constraintHeight_percent=".11"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="-35dp"
+        android:elevation="10dp"
+        android:text="0"
+        android:freezesText="true"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="@id/awayBlockButton"
+        app:layout_constraintLeft_toLeftOf="@id/awayBlockButton"/>
+    <TextView
+        android:id="@+id/awayOppAtkErr"
+        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintWidth_percent=".2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_marginBottom="0dp"
+        android:elevation="10dp"
+        android:freezesText="true"
+        android:text="0"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="@id/awayOppAtkErrButton"
+        app:layout_constraintRight_toRightOf="@id/awayOppAtkErrButton"/>
+    <TextView
+        android:id="@+id/homeOppAtkErr"
+        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintWidth_percent=".2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_marginBottom="0dp"
+        android:elevation="10dp"
+        android:text="0"
+        android:freezesText="true"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="@id/homeOppAtkErrButton"
+        app:layout_constraintRight_toRightOf="@id/homeOppAtkErrButton"/>
+    <TextView
+        android:id="@+id/homeOppSrvErr"
+        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintWidth_percent=".2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_marginBottom="0dp"
+        android:elevation="10dp"
+        android:text="0"
+        android:freezesText="true"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="@id/homeOppSrvErrButton"
+        app:layout_constraintRight_toRightOf="@id/homeOppSrvErrButton"/>
+    <TextView
+        android:id="@+id/awayOppSrvErr"
+        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintWidth_percent=".2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_marginBottom="0dp"
+        android:elevation="10dp"
+        android:text="0"
+        android:freezesText="true"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="@id/awayOppSrvErrButton"
+        app:layout_constraintRight_toRightOf="@id/awayOppSrvErrButton"/>
+    <TextView
+        android:id="@+id/awayOppOthErr"
+        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintWidth_percent=".2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_marginBottom="0dp"
+        android:elevation="10dp"
+        android:text="0"
+        android:freezesText="true"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="@id/awayOppOthErrButton"
+        app:layout_constraintRight_toRightOf="@id/awayOppOthErrButton"/>
+    <TextView
+        android:id="@+id/homeOppOthErr"
+        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintWidth_percent=".2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_marginBottom="0dp"
+        android:elevation="10dp"
+        android:text="0"
+        android:freezesText="true"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="@id/homeOppOthErrButton"
+        app:layout_constraintRight_toRightOf="@id/homeOppOthErrButton"/>
+
+    <Button
+        android:id="@+id/Set1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintWidth_percent=".163"
+        app:layout_constraintHeight_percent=".11"
+        android:text="Set 1"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textColor="@color/gold"
+        android:onClick="setClicked"
+        android:layout_marginRight="1dp"
+
+        app:layout_constraintRight_toLeftOf="@id/Set2"
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="1dp"
+        app:layout_constraintBottom_toTopOf="@id/awayTeamName"
+        android:layout_marginBottom="1dp"/>
+    <Button
+        android:id="@+id/Set3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintWidth_percent=".163"
+        app:layout_constraintHeight_percent=".11"
+        android:text="Set 3"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:onClick="setClicked"
+        app:layout_constraintRight_toLeftOf="@id/guideline"
+        android:layout_marginRight="1dp"
+        android:textColor="@color/gold"
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="1dp"
+        app:layout_constraintBottom_toTopOf="@id/awayTeamName"
+        android:layout_marginBottom="1dp"/>
+    <Button
+        android:id="@+id/Set2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintWidth_percent=".163"
+        app:layout_constraintHeight_percent=".11"
+        android:text="Set 2"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:onClick="setClicked"
+        app:layout_constraintRight_toLeftOf="@id/Set3"
+        android:layout_marginRight="1dp"
+        android:textColor="@color/gold"
+        tools:layout_editor_absoluteX="3dp"
+        app:layout_constraintBottom_toTopOf="@id/awayTeamName"
+        android:layout_marginBottom="1dp"
+        tools:layout_editor_absoluteY="1dp" />
+
+    <TextView
+        android:id="@+id/setNumber"
+        android:text="1"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textColor="@color/gold"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintWidth_percent=".2"
+        app:layout_constraintHeight_percent=".11"
+        android:gravity="center"
+        android:textSize="50dp"
+        android:background="@color/green"
+        app:layout_constraintLeft_toRightOf="@id/guideline2"
+        app:layout_constraintTop_toBottomOf="@id/awayOppOthErrButton"
+        android:layout_marginTop="80dp"
+        />
+
+
+
+
+
+
+
+
+
+
+
+    <Button
+        android:id="@+id/homeAtkAttemptsButton"
+        app:layout_constraintWidth_percent=".25"
+        app:layout_constraintHeight_percent=".1"
+        android:layout_width="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/homeScoreButton"
+        app:layout_constraintLeft_toLeftOf="@id/homeScoreButton"
+        android:layout_height="0dp"
+        android:layout_marginTop="-5dp"
+        android:onClick="onClick"
+
+        android:backgroundTint="@color/gold"
+        android:gravity="center_horizontal"
+        android:text="Attempts"
+        android:textAllCaps="false"
+        app:layout_constraintLeft_toRightOf="@id/awayScoreButton"
+        app:layout_constraintTop_toBottomOf="@id/homeAceButton" />
+    <TextView
+        android:id="@+id/homeAtkAttempts"
+        app:layout_constraintWidth_percent=".255"
+        app:layout_constraintHeight_percent=".11"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_marginBottom="-25dp"
+        android:elevation="10dp"
+        android:paddingBottom="15dp"
+        android:text="0"
+        android:freezesText="true"
+        android:textColor="@color/black"
+        android:saveEnabled="false"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="@id/homeScoreButton"
+        app:layout_constraintLeft_toLeftOf="@id/homeScoreButton"/>
+
+    <Button
+        android:id="@+id/awayAtkAttemptsButton"
+        app:layout_constraintWidth_percent=".25"
+        app:layout_constraintHeight_percent=".1"
+        android:layout_width="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/awayScoreButton"
+        app:layout_constraintLeft_toLeftOf="@id/awayScoreButton"
+        android:layout_height="0dp"
+        android:layout_marginTop="-5dp"
+        android:onClick="onClick"
+
+        android:backgroundTint="@color/gold"
+        android:gravity="center_horizontal"
+        android:text="Attempts"
+        android:textAllCaps="false"
+
+        app:layout_constraintLeft_toRightOf="@id/awayScoreButton"
+        app:layout_constraintTop_toBottomOf="@id/homeAceButton" />
+    <TextView
+        android:id="@+id/awayAtkAttempts"
+        app:layout_constraintWidth_percent=".255"
+        app:layout_constraintHeight_percent=".11"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_marginBottom="-25dp"
+        android:elevation="10dp"
+        android:paddingBottom="15dp"
+        android:text="0"
+        android:freezesText="true"
+        android:textColor="@color/black"
+        android:saveEnabled="false"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="@id/awayScoreButton"
+        app:layout_constraintLeft_toLeftOf="@id/awayScoreButton"/>
+
+
+    <Button
+        android:id="@+id/homePass1"
+        app:layout_constraintWidth_percent=".15"
+        app:layout_constraintHeight_percent=".1"
+        android:layout_width="0dp"
+        app:layout_constraintTop_toBottomOf="@id/homeOppOthErrButton"
+
+        android:layout_height="0dp"
+        android:layout_marginTop="-10dp"
+        android:onClick="onClick"
+
+        android:backgroundTint="@color/gold"
+        android:gravity="center_horizontal"
+        android:text="1"
+        android:textAllCaps="false"
+
+        app:layout_constraintLeft_toLeftOf="@id/homeOppOthErrButton"
+        />
+
+
+
+
+
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4"
+        app:layout_constraintGuide_begin="136dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

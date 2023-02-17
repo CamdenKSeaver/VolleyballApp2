@@ -15,20 +15,20 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="All Games"
         android:layout_gravity="center"
-        android:gravity="center"
-        android:textColor="@color/gold"
         android:background="@color/green"
-        android:textSize="40dp"/>
+        android:gravity="center"
+        android:text="All Games"
+        android:textColor="@color/gold"
+        android:textSize="40dp" />
+
     <ListView
         android:id="@+id/allGamesListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:divider="@color/green"
-        android:dividerHeight="2dp"
-        >
+        android:dividerHeight="2dp">
 
 
     </ListView>
