@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     Home firstFragment = new Home();
     Scoreboard secondFragment = new Scoreboard();
-    PublicGames thirdFragment = new PublicGames();
+    FullScoreboard thirdFragment = new FullScoreboard();
     PrivateGames fourthFragment = new PrivateGames();
     secondHome fifthFragment = new secondHome();
 
@@ -577,7 +577,9 @@ return true;
     }
 
 
-
+    public void test(View view){
+        getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, thirdFragment).commitNow();
+    }
 
 //FIREBASE
 
