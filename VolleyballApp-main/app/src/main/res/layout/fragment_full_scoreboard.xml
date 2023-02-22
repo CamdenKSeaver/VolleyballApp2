@@ -21,15 +21,15 @@
         android:id="@+id/homeScoreButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="120dp"
+
         android:layout_marginRight="2dp"
         android:backgroundTint="@color/red"
         android:gravity="center_horizontal"
         android:onClick="onClick"
         android:text="Score"
-        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintHeight_percent="0.33"
         app:layout_constraintRight_toLeftOf="@id/guideline"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeTeamName"
         app:layout_constraintWidth_percent=".25" />
 
     <Button
@@ -37,14 +37,14 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginLeft="2dp"
-        android:layout_marginTop="120dp"
+        app:layout_constraintTop_toBottomOf="@id/homeTeamName"
         android:backgroundTint="@color/blue"
         android:gravity="center_horizontal"
         android:onClick="onClick"
         android:text="Score"
-        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintHeight_percent="0.33"
         app:layout_constraintLeft_toRightOf="@id/guideline"
-        app:layout_constraintTop_toTopOf="parent"
+
         app:layout_constraintWidth_percent=".25" />
 
 
@@ -69,9 +69,10 @@
         android:gravity="center_horizontal"
         android:onClick="onClick"
         android:text="Attempts"
+        android:textSize="12dp"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="@id/homeScoreButton"
-        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintHeight_percent=".11"
 
 
         app:layout_constraintLeft_toLeftOf="@id/homeScoreButton"
@@ -81,7 +82,7 @@
         android:id="@+id/awayAtmpButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-
+        android:textSize="12dp"
         android:layout_marginRight="2dp"
         android:backgroundTint="@color/gold"
         android:elevation="20dp"
@@ -90,7 +91,7 @@
         android:text="Attempts"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="@id/homeScoreButton"
-        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintHeight_percent=".11"
         app:layout_constraintLeft_toLeftOf="@id/awayScoreButton"
         app:layout_constraintWidth_percent=".25" />
 
@@ -99,7 +100,7 @@
         android:id="@+id/home1"
         android:layout_width="0dp"
         android:layout_height="0dp"
-
+        android:layout_marginTop="-5dp"
         android:layout_marginRight="2dp"
         android:backgroundTint="@color/gold"
         android:elevation="20dp"
@@ -108,14 +109,14 @@
         android:text="1"
         android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@id/homeOppOthErrButton"
-        app:layout_constraintHeight_percent=".08"
+        app:layout_constraintHeight_percent=".1"
         app:layout_constraintLeft_toLeftOf="@id/homeOppOthErrButton"
         app:layout_constraintWidth_percent=".16" />
     <Button
         android:id="@+id/home2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-
+        android:layout_marginTop="-5dp"
         android:layout_marginLeft="2.5dp"
         android:backgroundTint="@color/gold"
         android:elevation="20dp"
@@ -124,7 +125,7 @@
         android:text="2"
         android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@id/homeOppOthErrButton"
-        app:layout_constraintHeight_percent=".08"
+        app:layout_constraintHeight_percent=".1"
         app:layout_constraintLeft_toRightOf="@id/home1"
         app:layout_constraintWidth_percent=".16" />
     <Button
@@ -132,6 +133,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
 android:layout_marginRight="1dp"
+        android:layout_marginTop="-5dp"
         android:layout_marginLeft="2dp"
         android:backgroundTint="@color/gold"
         android:elevation="20dp"
@@ -140,7 +142,7 @@ android:layout_marginRight="1dp"
         android:text="3"
         android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@id/homeOppOthErrButton"
-        app:layout_constraintHeight_percent=".08"
+        app:layout_constraintHeight_percent=".1"
         app:layout_constraintRight_toRightOf="@id/guideline"
         app:layout_constraintWidth_percent=".16" />
 
@@ -149,7 +151,7 @@ android:layout_marginRight="1dp"
         android:id="@+id/away3"
         android:layout_width="0dp"
         android:layout_height="0dp"
-
+        android:layout_marginTop="-5dp"
         android:layout_marginLeft="1.25dp"
         android:backgroundTint="@color/gold"
         android:elevation="20dp"
@@ -158,14 +160,14 @@ android:layout_marginRight="1dp"
         android:text="3"
         android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@id/awayOppOthErrButton"
-        app:layout_constraintHeight_percent=".08"
+        app:layout_constraintHeight_percent=".1"
         app:layout_constraintRight_toRightOf="@id/awayOppOthErrButton"
         app:layout_constraintWidth_percent=".16" />
     <Button
         android:id="@+id/away2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-
+        android:layout_marginTop="-5dp"
         android:layout_marginLeft="1.25dp"
         android:backgroundTint="@color/gold"
         android:elevation="20dp"
@@ -174,14 +176,14 @@ android:layout_marginRight="1dp"
         android:text="2"
         android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@id/homeOppOthErrButton"
-        app:layout_constraintHeight_percent=".08"
+        app:layout_constraintHeight_percent=".1"
         app:layout_constraintLeft_toRightOf="@id/away1"
         app:layout_constraintWidth_percent=".16" />
     <Button
         android:id="@+id/away1"
         android:layout_width="0dp"
         android:layout_height="0dp"
-
+        android:layout_marginTop="-5dp"
         android:layout_marginLeft="1dp"
         android:backgroundTint="@color/gold"
         android:elevation="20dp"
@@ -190,9 +192,125 @@ android:layout_marginRight="1dp"
         android:text="1"
         android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@id/homeOppOthErrButton"
-        app:layout_constraintHeight_percent=".08"
+        app:layout_constraintHeight_percent=".1"
         app:layout_constraintLeft_toRightOf="@id/guideline"
         app:layout_constraintWidth_percent=".16" />
+
+
+
+
+    <TextView
+        android:id="@+id/home1text"
+       android:layout_marginTop="5dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+      android:textColor="@color/black"
+        android:elevation="30dp"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="0"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toTopOf="@id/home1"
+        app:layout_constraintLeft_toLeftOf="@id/home1"
+        app:layout_constraintHeight_percent=".1"
+
+        app:layout_constraintWidth_percent=".16" />
+
+    <TextView
+        android:id="@+id/home2text"
+        android:layout_marginTop="5dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textColor="@color/black"
+        android:elevation="30dp"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="0"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toTopOf="@id/home2"
+        app:layout_constraintLeft_toLeftOf="@id/home2"
+        app:layout_constraintHeight_percent=".1"
+
+        app:layout_constraintWidth_percent=".16" />
+
+    <TextView
+        android:id="@+id/home3text"
+        android:layout_marginTop="5dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textColor="@color/black"
+        android:elevation="30dp"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="0"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toTopOf="@id/home3"
+        app:layout_constraintLeft_toLeftOf="@id/home3"
+        app:layout_constraintHeight_percent=".1"
+
+        app:layout_constraintWidth_percent=".16" />
+
+
+    <TextView
+        android:id="@+id/away1text"
+        android:layout_marginTop="5dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textColor="@color/black"
+        android:elevation="30dp"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="0"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toTopOf="@id/away1"
+        app:layout_constraintLeft_toLeftOf="@id/away1"
+        app:layout_constraintHeight_percent=".1"
+
+        app:layout_constraintWidth_percent=".16" />
+
+
+    <TextView
+        android:id="@+id/away2text"
+        android:layout_marginTop="5dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textColor="@color/black"
+        android:elevation="30dp"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="0"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toTopOf="@id/away2"
+        app:layout_constraintLeft_toLeftOf="@id/away2"
+        app:layout_constraintHeight_percent=".1"
+
+        app:layout_constraintWidth_percent=".16" />
+    <TextView
+        android:id="@+id/away3text"
+        android:layout_marginTop="5dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textColor="@color/black"
+        android:elevation="30dp"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="0"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toTopOf="@id/away3"
+        app:layout_constraintLeft_toLeftOf="@id/away3"
+        app:layout_constraintHeight_percent=".1"
+
+        app:layout_constraintWidth_percent=".16" />
+
+
+
+
 
 
 
@@ -213,6 +331,7 @@ android:layout_marginRight="1dp"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:elevation="10dp"
+        android:paddingTop="2dp"
         android:gravity="center"
         android:text="0"
 
@@ -231,7 +350,7 @@ android:layout_marginRight="1dp"
         android:elevation="10dp"
         android:gravity="center"
         android:text="0"
-
+        android:paddingTop="2dp"
         android:textColor="@color/black"
 
         android:textSize="25dp"
@@ -245,30 +364,31 @@ android:layout_marginRight="1dp"
         android:id="@+id/homeKillButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="120dp"
+
         android:layout_marginRight="2dp"
         android:backgroundTint="@color/red"
         android:gravity="center_horizontal"
         android:onClick="onClick"
         android:text="kill"
-        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintHeight_percent=".115"
         app:layout_constraintRight_toLeftOf="@id/homeScoreButton"
 
 
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeTeamName"
         app:layout_constraintWidth_percent=".235" />
 
     <Button
         android:id="@+id/homeAceButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="1dp"
+       android:layout_marginTop="-5dp"
         android:layout_marginRight="2dp"
         android:backgroundTint="@color/red"
         android:gravity="center_horizontal"
         android:onClick="onClick"
         android:text="Ace"
-        app:layout_constraintHeight_percent=".1"
+
+        app:layout_constraintHeight_percent=".115"
         app:layout_constraintRight_toLeftOf="@id/homeScoreButton"
         app:layout_constraintTop_toBottomOf="@id/homeKillButton"
         app:layout_constraintWidth_percent=".235" />
@@ -277,12 +397,13 @@ android:layout_marginRight="1dp"
         android:id="@+id/homeBlockButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="-5dp"
         android:layout_marginRight="2dp"
         android:backgroundTint="@color/red"
         android:gravity="center_horizontal"
         android:onClick="onClick"
         android:text="Block"
-        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintHeight_percent=".115"
         app:layout_constraintRight_toLeftOf="@id/homeScoreButton"
         app:layout_constraintTop_toBottomOf="@id/homeAceButton"
         app:layout_constraintWidth_percent=".235" />
@@ -292,15 +413,15 @@ android:layout_marginRight="1dp"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginLeft="2dp"
-        android:layout_marginTop="120dp"
+        app:layout_constraintTop_toBottomOf="@id/homeTeamName"
         android:backgroundTint="@color/blue"
 
         android:gravity="center_horizontal"
         android:onClick="onClick"
         android:text="kill"
-        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintHeight_percent=".115"
         app:layout_constraintLeft_toRightOf="@id/awayScoreButton"
-        app:layout_constraintTop_toTopOf="parent"
+
         app:layout_constraintWidth_percent=".235" />
 
     <Button
@@ -308,12 +429,12 @@ android:layout_marginRight="1dp"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginLeft="2dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="-5dp"
         android:backgroundTint="@color/blue"
         android:gravity="center_horizontal"
         android:onClick="onClick"
         android:text="Ace"
-        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintHeight_percent=".115"
         app:layout_constraintLeft_toRightOf="@id/awayScoreButton"
         app:layout_constraintTop_toBottomOf="@id/homeKillButton"
         app:layout_constraintWidth_percent=".235" />
@@ -323,12 +444,12 @@ android:layout_marginRight="1dp"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginLeft="2dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="-5dp"
         android:backgroundTint="@color/blue"
         android:gravity="center_horizontal"
         android:onClick="onClick"
         android:text="Block"
-        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintHeight_percent=".115"
         app:layout_constraintLeft_toRightOf="@id/awayScoreButton"
         app:layout_constraintTop_toBottomOf="@id/homeAceButton"
         app:layout_constraintWidth_percent=".235" />
@@ -338,12 +459,13 @@ android:layout_marginRight="1dp"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginRight="1dp"
+        android:layout_marginTop="-5dp"
         android:backgroundTint="@color/red"
         android:gravity="center_vertical"
         android:onClick="onClick"
         android:text="Opp Atk Error"
         android:textAllCaps="false"
-        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintHeight_percent=".11"
         app:layout_constraintRight_toLeftOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@id/homeScoreButton"
         app:layout_constraintWidth_percent=".49" />
@@ -356,9 +478,10 @@ android:layout_marginRight="1dp"
         android:backgroundTint="@color/red"
         android:gravity="center_vertical"
         android:onClick="onClick"
+        android:layout_marginTop="-5dp"
         android:text="Opp Srv Error"
         android:textAllCaps="false"
-        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintHeight_percent=".11"
         app:layout_constraintRight_toLeftOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@id/homeOppAtkErrButton"
         app:layout_constraintWidth_percent=".49"
@@ -367,6 +490,7 @@ android:layout_marginRight="1dp"
     <Button
         android:id="@+id/homeOppOthErrButton"
         android:layout_width="0dp"
+        android:layout_marginTop="-5dp"
         android:layout_height="0dp"
         android:layout_marginRight="1dp"
         android:backgroundTint="@color/red"
@@ -374,7 +498,7 @@ android:layout_marginRight="1dp"
         android:onClick="onClick"
         android:text="Opp Other Error"
         android:textAllCaps="false"
-        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintHeight_percent=".11"
         app:layout_constraintRight_toLeftOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@id/homeOppSrvErrButton"
         app:layout_constraintWidth_percent=".49"
@@ -389,7 +513,8 @@ android:layout_marginRight="1dp"
         android:onClick="onClick"
         android:text="Opp Atk Error"
         android:textAllCaps="false"
-        app:layout_constraintHeight_percent=".1"
+        android:layout_marginTop="-5dp"
+        app:layout_constraintHeight_percent=".11"
         app:layout_constraintLeft_toRightOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@id/awayScoreButton"
         app:layout_constraintWidth_percent=".49" />
@@ -398,13 +523,14 @@ android:layout_marginRight="1dp"
         android:id="@+id/awayOppSrvErrButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="-5dp"
         android:layout_marginRight="1dp"
         android:backgroundTint="@color/blue"
         android:gravity="center_vertical"
         android:onClick="onClick"
         android:text="Opp Srv Error"
         android:textAllCaps="false"
-        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintHeight_percent=".11"
         app:layout_constraintLeft_toRightOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@id/awayOppAtkErrButton"
         app:layout_constraintWidth_percent=".49"
@@ -413,6 +539,7 @@ android:layout_marginRight="1dp"
     <Button
         android:id="@+id/awayOppOthErrButton"
         android:layout_width="0dp"
+        android:layout_marginTop="-5dp"
         android:layout_height="0dp"
         android:layout_marginRight="1dp"
         android:backgroundTint="@color/blue"
@@ -420,7 +547,7 @@ android:layout_marginRight="1dp"
         android:onClick="onClick"
         android:text="Opp Other Error"
         android:textAllCaps="false"
-        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintHeight_percent=".11"
         app:layout_constraintLeft_toRightOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@id/awayOppSrvErrButton"
         app:layout_constraintWidth_percent=".49"
@@ -433,12 +560,12 @@ android:layout_marginRight="1dp"
         android:layout_marginLeft="1dp"
         android:fontFamily="sans-serif-condensed-medium"
         android:freezesText="true"
-        android:gravity="center_horizontal"
+        android:gravity="bottom"
         android:hint="Team Name"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@id/awayScoreButton"
+        app:layout_constraintTop_toBottomOf="@id/Set1"
 
-        app:layout_constraintHeight_percent=".08"
+        app:layout_constraintHeight_percent=".06"
         app:layout_constraintLeft_toRightOf="@id/guideline"
         app:layout_constraintWidth_percent=".49" />
 
@@ -449,12 +576,12 @@ android:layout_marginRight="1dp"
         android:layout_marginRight="1dp"
         android:fontFamily="sans-serif-condensed-medium"
         android:freezesText="true"
-        android:gravity="center_horizontal"
+        android:gravity="bottom"
         android:hint="Team Name"
 
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@id/homeScoreButton"
-        app:layout_constraintHeight_percent=".08"
+        app:layout_constraintTop_toBottomOf="@id/Set1"
+        app:layout_constraintHeight_percent=".06"
 
         app:layout_constraintRight_toLeftOf="@id/guideline"
         app:layout_constraintWidth_percent=".49" />
@@ -464,38 +591,36 @@ android:layout_marginRight="1dp"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginLeft="1dp"
-        android:layout_marginBottom="1dp"
+
         android:fontFamily="sans-serif-condensed-medium"
         android:onClick="saveGame"
         android:text="Save Game"
         android:textAllCaps="false"
         android:textColor="@color/gold"
         android:textSize="13sp"
-        app:layout_constraintBottom_toTopOf="@id/awayTeamName"
-        app:layout_constraintHeight_percent=".11"
+
+        app:layout_constraintHeight_percent=".08"
         app:layout_constraintLeft_toRightOf="@id/guideline"
         app:layout_constraintWidth_percent=".245"
-        tools:layout_editor_absoluteX="261dp"
-        tools:layout_editor_absoluteY="24dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/newGameButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginLeft="1dp"
-        android:layout_marginBottom="1dp"
+
         android:fontFamily="sans-serif-condensed-medium"
         android:onClick="addGameButtonClicked"
         android:text="New Game"
         android:textAllCaps="false"
         android:textColor="@color/gold"
         android:textSize="13sp"
-        app:layout_constraintBottom_toTopOf="@id/awayTeamName"
-        app:layout_constraintHeight_percent=".11"
+
+        app:layout_constraintHeight_percent=".08"
         app:layout_constraintLeft_toRightOf="@id/saveButton"
         app:layout_constraintWidth_percent=".245"
-        tools:layout_editor_absoluteX="261dp"
-        tools:layout_editor_absoluteY="24dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/homeScore"
@@ -534,6 +659,7 @@ android:layout_marginRight="1dp"
         android:elevation="10dp"
         android:freezesText="true"
         android:gravity="center"
+        android:paddingTop="2dp"
         android:text="0"
 
         android:textColor="@color/black"
@@ -550,7 +676,7 @@ android:layout_marginRight="1dp"
         android:elevation="10dp"
         android:freezesText="true"
         android:gravity="center"
-
+        android:paddingTop="2dp"
         android:text="0"
         android:textColor="@color/black"
         android:textSize="25dp"
@@ -567,6 +693,7 @@ android:layout_marginRight="1dp"
         android:freezesText="true"
         android:gravity="center"
         android:text="0"
+        android:paddingTop="2dp"
         android:textColor="@color/black"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="@id/awayAceButton"
@@ -582,7 +709,7 @@ android:layout_marginRight="1dp"
         android:gravity="center"
         android:text="0"
         android:textColor="@color/black"
-
+        android:paddingTop="2dp"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="@id/homeAceButton"
         app:layout_constraintHeight_percent=".11"
@@ -597,6 +724,7 @@ android:layout_marginRight="1dp"
         android:freezesText="true"
         android:gravity="center"
         android:saveEnabled="false"
+        android:paddingTop="2dp"
         android:text="0"
         android:textColor="@color/black"
         android:textSize="25dp"
@@ -613,6 +741,7 @@ android:layout_marginRight="1dp"
         android:freezesText="true"
         android:gravity="center"
         android:text="0"
+        android:paddingTop="2dp"
         android:textColor="@color/black"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="@id/awayBlockButton"
@@ -629,6 +758,7 @@ android:layout_marginRight="1dp"
         android:freezesText="true"
         android:gravity="center"
         android:text="0"
+
         android:textColor="@color/black"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="@id/awayOppAtkErrButton"
@@ -645,10 +775,11 @@ android:layout_marginRight="1dp"
         android:freezesText="true"
         android:gravity="center"
         android:text="0"
+
         android:textColor="@color/black"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="@id/homeOppAtkErrButton"
-        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintHeight_percent=".11"
         app:layout_constraintRight_toRightOf="@id/homeOppAtkErrButton"
         app:layout_constraintWidth_percent=".2" />
 
@@ -664,7 +795,7 @@ android:layout_marginRight="1dp"
         android:textColor="@color/black"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="@id/homeOppSrvErrButton"
-        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintHeight_percent=".11"
         app:layout_constraintRight_toRightOf="@id/homeOppSrvErrButton"
         app:layout_constraintWidth_percent=".2" />
 
@@ -680,7 +811,7 @@ android:layout_marginRight="1dp"
         android:textColor="@color/black"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="@id/awayOppSrvErrButton"
-        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintHeight_percent=".11"
         app:layout_constraintRight_toRightOf="@id/awayOppSrvErrButton"
         app:layout_constraintWidth_percent=".2" />
 
@@ -696,7 +827,7 @@ android:layout_marginRight="1dp"
         android:textColor="@color/black"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="@id/awayOppOthErrButton"
-        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintHeight_percent=".11"
         app:layout_constraintRight_toRightOf="@id/awayOppOthErrButton"
         app:layout_constraintWidth_percent=".2" />
 
@@ -712,7 +843,7 @@ android:layout_marginRight="1dp"
         android:textColor="@color/black"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="@id/homeOppOthErrButton"
-        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintHeight_percent=".11"
         app:layout_constraintRight_toRightOf="@id/homeOppOthErrButton"
         app:layout_constraintWidth_percent=".2" />
 
@@ -721,52 +852,49 @@ android:layout_marginRight="1dp"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginRight="1dp"
-        android:layout_marginBottom="1dp"
+
         android:fontFamily="sans-serif-condensed-medium"
         android:onClick="setClicked"
         android:text="Set 1"
         android:textColor="@color/gold"
-        app:layout_constraintBottom_toTopOf="@id/awayTeamName"
+        app:layout_constraintTop_toTopOf="parent"
 
-        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintHeight_percent=".08"
         app:layout_constraintRight_toLeftOf="@id/Set2"
         app:layout_constraintWidth_percent=".163"
-        tools:layout_editor_absoluteX="3dp"
-        tools:layout_editor_absoluteY="1dp" />
+     />
 
     <Button
         android:id="@+id/Set3"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginRight="1dp"
-        android:layout_marginBottom="1dp"
+
         android:fontFamily="sans-serif-condensed-medium"
         android:onClick="setClicked"
         android:text="Set 3"
         android:textColor="@color/gold"
-        app:layout_constraintBottom_toTopOf="@id/awayTeamName"
-        app:layout_constraintHeight_percent=".1"
+
+        app:layout_constraintHeight_percent=".08"
         app:layout_constraintRight_toLeftOf="@id/guideline"
         app:layout_constraintWidth_percent=".163"
-        tools:layout_editor_absoluteX="3dp"
-        tools:layout_editor_absoluteY="1dp" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <Button
         android:id="@+id/Set2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginRight="1dp"
-        android:layout_marginBottom="1dp"
+
         android:fontFamily="sans-serif-condensed-medium"
         android:onClick="setClicked"
         android:text="Set 2"
         android:textColor="@color/gold"
-        app:layout_constraintBottom_toTopOf="@id/awayTeamName"
-        app:layout_constraintHeight_percent=".1"
+
+        app:layout_constraintHeight_percent=".08"
         app:layout_constraintRight_toLeftOf="@id/Set3"
         app:layout_constraintWidth_percent=".163"
-        tools:layout_editor_absoluteX="3dp"
-        tools:layout_editor_absoluteY="1dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
@@ -780,7 +908,7 @@ android:layout_marginRight="1dp"
         android:text="1"
         android:textColor="@color/gold"
         android:textSize="50dp"
-        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintHeight_percent=".11"
         app:layout_constraintLeft_toLeftOf="@id/home1"
         app:layout_constraintTop_toBottomOf="@id/home1"
         app:layout_constraintWidth_percent=".2" />
@@ -792,6 +920,18 @@ android:layout_marginRight="1dp"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="136dp"
         app:layout_constraintGuide_percent="0.4" />
+
+    <ListView
+        app:layout_constraintHeight_percent=".11"
+        app:layout_constraintWidth_percent=".78"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/black"
+        app:layout_constraintLeft_toRightOf="@id/setNumber"
+        app:layout_constraintTop_toTopOf="@id/setNumber"
+
+        tools:layout_editor_absoluteX="86dp"
+        tools:layout_editor_absoluteY="775dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
