@@ -18,12 +18,14 @@ public class ASet implements Parcelable {
     private int awayAce, awayBlock, awayKill;
     private int homeOppAtkError, homeOppServeError, homeOppOtherError;
     private int awayOppAtkError, awayOppServeError, awayOppOtherError;
+
     private String gameDocID, setDocID;
+    private int homeAtmp, awayAtmp, home1, home2, home3, away1, away2, away3;
 
     public ASet(int setNumber, int homeScore, int awayScore, int homeAce, int homeBlock, int homeKill,
                      int awayAce, int awayBlock, int awayKill, int homeOppAtkError,
                      int homeOppServeError, int homeOppOtherError, int awayOppAtkError,
-                     int awayOppServeError, int awayOppOtherError, String gameDocID, String setDocID) {
+                     int awayOppServeError, int awayOppOtherError, String gameDocID, String setDocID,int homeAtmp, int awayAtmp, int home1,int home2, int home3,int away1,int away2,int away3) {
         this.setNumber = setNumber;
         this.homeScore = homeScore;
         this.awayScore = awayScore;
@@ -41,6 +43,14 @@ public class ASet implements Parcelable {
         this.awayOppOtherError = awayOppOtherError;
         this.gameDocID = gameDocID;
         this.setDocID = setDocID;
+        this.homeAtmp = homeAtmp;
+        this.awayAtmp = awayAtmp;
+        this.home1 =home1;
+        this.home2 = home2;
+        this.home3 = home3;
+        this.away1 =away1;
+        this.away2 =away2;
+        this.away3 =away3;
     }
 
     @Override
@@ -62,8 +72,7 @@ public class ASet implements Parcelable {
                 ", awayOppServeError=" + awayOppServeError +
                 ", awayOppOtherError=" + awayOppOtherError +
                 ", gameDocID='" + gameDocID + '\'' +
-                ", setDocID='" + setDocID + '\'' +
-                '}';
+                ", setDocID='" + setDocID + '\'' +", homeAtmp="+ homeAtmp+ ", awayAtmp=" + awayAtmp +", home1="+ home1 +", home2=" + home2 + ", home3=" + home3 + ", away1="+away1 +", away2="+away2 +", away3="+away3 +'}';
     }
 
     public ASet() {
@@ -84,6 +93,14 @@ public class ASet implements Parcelable {
         awayOppOtherError = 0;
         gameDocID = "none";
         setDocID = "none";
+        homeAtmp = 0;
+        awayAtmp = 0;
+        home1 =0;
+        home2 = 0;
+        home3 = 0;
+        away1 =0;
+        away2 =0;
+        away3 =0;
     }
     public ASet(int setNumber) {
         this.setNumber = setNumber;
@@ -103,6 +120,14 @@ public class ASet implements Parcelable {
         awayOppOtherError = 0;
         gameDocID = "none";
         setDocID = "none";
+        homeAtmp = 0;
+        awayAtmp = 0;
+        home1 =0;
+        home2 = 0;
+        home3 = 0;
+        away1 =0;
+        away2 =0;
+        away3 =0;
     }
 
 
@@ -124,6 +149,14 @@ public class ASet implements Parcelable {
         awayOppOtherError = 0;
         this.gameDocID = gameDocID;
         setDocID = "none";
+        homeAtmp = 0;
+       awayAtmp = 0;
+        home1 =0;
+        home2 = 0;
+        home3 = 0;
+        away1 =0;
+        away2 =0;
+        away3 =0;
     }
 
 
@@ -276,6 +309,69 @@ public class ASet implements Parcelable {
         this.awayOppOtherError = awayOppOtherError;
     }
 
+    public int getHomeAtmp() {
+        return homeAtmp;
+    }
+
+    public void setHomeAtmp(int homeAtmp) {
+        this.homeAtmp = homeAtmp;
+    }
+
+    public int getAwayAtmp() {
+        return awayAtmp;
+    }
+
+    public void setAwayAtmp(int awayAtmp) {
+        this.awayAtmp = awayAtmp;
+    }
+
+    public int getHome1() {
+        return home1;
+    }
+
+    public void setHome1(int home1) {
+        this.home1 = home1;
+    }
+
+    public int getHome2() {
+        return home2;
+    }
+
+    public void setHome2(int home2) {
+        this.home2 = home2;
+    }
+
+    public int getHome3() {
+        return home3;
+    }
+
+    public void setHome3(int home3) {
+        this.home3 = home3;
+    }
+
+    public int getAway1() {
+        return away1;
+    }
+
+    public void setAway1(int away1) {
+        this.away1 = away1;
+    }
+
+    public int getAway2() {
+        return away2;
+    }
+
+    public void setAway2(int away2) {
+        this.away2 = away2;
+    }
+
+    public int getAway3() {
+        return away3;
+    }
+
+    public void setAway3(int away3) {
+        this.away3 = away3;
+    }
 
     @Override
     public int describeContents() {
@@ -301,6 +397,14 @@ public class ASet implements Parcelable {
         parcel.writeInt(awayOppOtherError);
         parcel.writeString(gameDocID);
         parcel.writeString(setDocID);
+        parcel.writeInt(homeAtmp);
+        parcel.writeInt(awayAtmp);
+        parcel.writeInt(home1);
+        parcel.writeInt(home2);
+        parcel.writeInt(home3);
+        parcel.writeInt(away1);
+        parcel.writeInt(away2);
+        parcel.writeInt(away3);
     }
 
     protected ASet(Parcel in) {
@@ -321,6 +425,15 @@ public class ASet implements Parcelable {
         awayOppOtherError = in.readInt();
         gameDocID = in.readString();
         setDocID = in.readString();
+        homeAtmp = in.readInt();
+        awayAtmp = in.readInt();
+        home1 = in.readInt();
+        home2 = in.readInt();
+        home3 = in.readInt();
+        away1 = in.readInt();
+        away2 = in.readInt();
+        away3 = in.readInt();
+
 
     }
 }

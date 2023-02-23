@@ -21,7 +21,7 @@
         android:id="@+id/homeScoreButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-
+        android:translationZ="1dp"
         android:layout_marginRight="2dp"
         android:backgroundTint="@color/red"
         android:gravity="center_horizontal"
@@ -65,7 +65,7 @@
 
         android:layout_marginRight="2dp"
         android:backgroundTint="@color/gold"
-        android:elevation="20dp"
+        android:elevation="50dp"
         android:gravity="center_horizontal"
         android:onClick="onClick"
         android:text="Attempts"
@@ -85,7 +85,7 @@
         android:textSize="12dp"
         android:layout_marginRight="2dp"
         android:backgroundTint="@color/gold"
-        android:elevation="20dp"
+        android:elevation="50dp"
         android:gravity="center_horizontal"
         android:onClick="onClick"
         android:text="Attempts"
@@ -207,7 +207,7 @@ android:layout_marginRight="1dp"
       android:textColor="@color/black"
         android:elevation="30dp"
         android:gravity="center"
-        android:onClick="onClick"
+
         android:text="0"
         android:textSize="20dp"
         android:textAllCaps="false"
@@ -225,7 +225,7 @@ android:layout_marginRight="1dp"
         android:textColor="@color/black"
         android:elevation="30dp"
         android:gravity="center"
-        android:onClick="onClick"
+
         android:text="0"
         android:textSize="20dp"
         android:textAllCaps="false"
@@ -243,7 +243,7 @@ android:layout_marginRight="1dp"
         android:textColor="@color/black"
         android:elevation="30dp"
         android:gravity="center"
-        android:onClick="onClick"
+
         android:text="0"
         android:textSize="20dp"
         android:textAllCaps="false"
@@ -262,7 +262,7 @@ android:layout_marginRight="1dp"
         android:textColor="@color/black"
         android:elevation="30dp"
         android:gravity="center"
-        android:onClick="onClick"
+
         android:text="0"
         android:textSize="20dp"
         android:textAllCaps="false"
@@ -281,7 +281,7 @@ android:layout_marginRight="1dp"
         android:textColor="@color/black"
         android:elevation="30dp"
         android:gravity="center"
-        android:onClick="onClick"
+
         android:text="0"
         android:textSize="20dp"
         android:textAllCaps="false"
@@ -298,7 +298,7 @@ android:layout_marginRight="1dp"
         android:textColor="@color/black"
         android:elevation="30dp"
         android:gravity="center"
-        android:onClick="onClick"
+       
         android:text="0"
         android:textSize="20dp"
         android:textAllCaps="false"
@@ -852,18 +852,32 @@ android:layout_marginRight="1dp"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginRight="1dp"
-
+        android:textAllCaps="false"
         android:fontFamily="sans-serif-condensed-medium"
         android:onClick="setClicked"
-        android:text="Set 1"
+        android:text="1"
         android:textColor="@color/gold"
         app:layout_constraintTop_toTopOf="parent"
 
         app:layout_constraintHeight_percent=".08"
-        app:layout_constraintRight_toLeftOf="@id/Set2"
-        app:layout_constraintWidth_percent=".163"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintWidth_percent=".1"
      />
+    <Button
+        android:id="@+id/Set2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginRight="1dp"
+        android:textAllCaps="false"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:onClick="setClicked"
+        android:text="2"
+        android:textColor="@color/gold"
 
+        app:layout_constraintHeight_percent=".08"
+        app:layout_constraintLeft_toRightOf="@id/Set1"
+        app:layout_constraintWidth_percent=".1"
+        app:layout_constraintTop_toTopOf="parent" />
     <Button
         android:id="@+id/Set3"
         android:layout_width="0dp"
@@ -872,29 +886,47 @@ android:layout_marginRight="1dp"
 
         android:fontFamily="sans-serif-condensed-medium"
         android:onClick="setClicked"
-        android:text="Set 3"
+        android:text="3"
         android:textColor="@color/gold"
+android:textAllCaps="false"
 
         app:layout_constraintHeight_percent=".08"
-        app:layout_constraintRight_toLeftOf="@id/guideline"
-        app:layout_constraintWidth_percent=".163"
+        app:layout_constraintLeft_toRightOf="@id/Set2"
+        app:layout_constraintWidth_percent=".1"
         app:layout_constraintTop_toTopOf="parent"/>
-
     <Button
-        android:id="@+id/Set2"
+        android:id="@+id/Set4"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginRight="1dp"
-
+        android:textAllCaps="false"
         android:fontFamily="sans-serif-condensed-medium"
         android:onClick="setClicked"
-        android:text="Set 2"
+        android:text="4"
         android:textColor="@color/gold"
 
         app:layout_constraintHeight_percent=".08"
-        app:layout_constraintRight_toLeftOf="@id/Set3"
-        app:layout_constraintWidth_percent=".163"
+        app:layout_constraintLeft_toRightOf="@id/Set3"
+        app:layout_constraintWidth_percent=".1"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/Set5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginRight="1dp"
+        android:textAllCaps="false"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:onClick="setClicked"
+        android:text="5"
+        android:textColor="@color/gold"
+
+        app:layout_constraintHeight_percent=".08"
+        app:layout_constraintLeft_toRightOf="@id/Set4"
+        app:layout_constraintWidth_percent=".1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
 
 
     <TextView
@@ -908,7 +940,7 @@ android:layout_marginRight="1dp"
         android:text="1"
         android:textColor="@color/gold"
         android:textSize="50dp"
-        app:layout_constraintHeight_percent=".11"
+        app:layout_constraintHeight_percent=".12"
         app:layout_constraintLeft_toLeftOf="@id/home1"
         app:layout_constraintTop_toBottomOf="@id/home1"
         app:layout_constraintWidth_percent=".2" />
@@ -922,7 +954,7 @@ android:layout_marginRight="1dp"
         app:layout_constraintGuide_percent="0.4" />
 
     <ListView
-        app:layout_constraintHeight_percent=".11"
+        app:layout_constraintHeight_percent=".12"
         app:layout_constraintWidth_percent=".78"
         android:layout_width="0dp"
         android:layout_height="0dp"

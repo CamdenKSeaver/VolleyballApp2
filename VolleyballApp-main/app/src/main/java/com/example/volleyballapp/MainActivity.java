@@ -55,6 +55,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     TextView setNumber;
     EditText homeTeamName;
     EditText awayTeamName;
+    TextView homeAtmp;
+    TextView awayAtmp;
+    TextView home1T;
+    TextView home2T;
+    TextView home3T;
+    TextView away1T;
+    TextView away2T;
+    TextView away3T;
+
 
     Button homeKillButton;
     Button homeScoresButton;
@@ -70,6 +79,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     Button awaySrvErrButton;
     Button homeOthErrButton;
     Button awayOthErrButton;
+    Button homeAtmpButton;
+    Button awayAtmpButton;
+    Button home1;
+    Button home2;
+    Button home3;
+    Button away1;
+    Button away2;
+    Button away3;
 
 
     @Override
@@ -138,6 +155,23 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         awaySrvErrButton = findViewById(R.id.awayOppSrvErrButton);
         homeOthErrButton = findViewById(R.id.homeOppOthErrButton);
         awayOthErrButton = findViewById(R.id.awayOppOthErrButton);
+        homeAtmpButton = findViewById(R.id.homeAtmpButton);
+        awayAtmpButton = findViewById(R.id.awayAtmpButton);
+        homeAtmp = findViewById(R.id.homeAtmp);
+        awayAtmp = findViewById(R.id.awayAtmp);
+        home1T = findViewById(R.id.home1text);
+        home2T =findViewById(R.id.home2text);
+        home3T =findViewById(R.id.home3text);
+        away1T =findViewById(R.id.away1text);
+        away2T= findViewById(R.id.away2text);
+        away3T = findViewById(R.id.away3text);
+        home1 = findViewById(R.id.home1);
+        home2 =  findViewById(R.id.home2);
+        home3 = findViewById(R.id.home3);
+        away1= findViewById(R.id.away1);
+        away2 = findViewById(R.id.away2);
+        away3= findViewById(R.id.away3);
+
 
         homeKillButton.setOnLongClickListener(new Button.OnLongClickListener() {
             @Override
@@ -311,14 +345,19 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
                 currentSet.setHomeScore(currentSet.getHomeScore() + 1);
                 homeScores.setText("" + currentSet.getHomeScore());
+                awayAtmpButton.bringToFront();
+                homeAtmpButton.bringToFront();
                 return true;
 
 
             case R.id.awayScoreButton:
 
-
+                awayAtmpButton.bringToFront();
+                homeAtmpButton.bringToFront();
                 currentSet.setAwayScore(currentSet.getAwayScore() + 1);
                 awayScore.setText("" + currentSet.getAwayScore());
+                awayAtmpButton.bringToFront();
+                homeAtmpButton.bringToFront();
                 return true;
 
             case R.id.homeAceButton:
@@ -418,6 +457,64 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 currentSet.setAwayScore(currentSet.getAwayScore() + 1);
                 awayOthErr.setText("" + currentSet.getAwayOppOtherError());
                 awayScore.setText("" + currentSet.getAwayScore());
+                return true;
+
+
+            case R.id.homeAtmpButton:
+
+
+                currentSet.setHomeAtmp(currentSet.getHomeAtmp() + 1);
+                homeAtmp.setText("" + currentSet.getHomeAtmp());
+
+                return true;
+            case R.id.awayAtmpButton:
+
+
+                currentSet.setAwayAtmp(currentSet.getAwayAtmp() + 1);
+                awayAtmp.setText("" + currentSet.getAwayAtmp());
+
+                return true;
+            case R.id.home1:
+
+
+                currentSet.setHome1(currentSet.getHome1() + 1);
+                home1T.setText("" + currentSet.getHome1());
+
+                return true;
+            case R.id.home2:
+
+
+                currentSet.setHome2(currentSet.getHome2() + 1);
+                home2T.setText("" + currentSet.getHome2());
+
+                return true;
+            case R.id.home3:
+
+
+                currentSet.setHome3(currentSet.getHome3() + 1);
+                home3T.setText("" + currentSet.getHome3());
+
+                return true;
+            case R.id.away1:
+
+
+                currentSet.setAway1(currentSet.getAway1() + 1);
+                away1.setText("" + currentSet.getAway1());
+
+                return true;
+            case R.id.away2:
+
+
+                currentSet.setAway2(currentSet.getAway2() + 1);
+                away2.setText("" + currentSet.getAway2());
+
+                return true;
+            case R.id.away3:
+
+
+                currentSet.setAway3(currentSet.getAway3() + 1);
+                away3.setText("" + currentSet.getAway3());
+
                 return true;
 
 
